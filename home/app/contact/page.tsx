@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
 import { CopyButton } from "../components/code-block";
 import { PageIntro, SectionHeading } from "../components/ui";
+import { pageMetadata } from "../lib/metadata";
 
-export const metadata: Metadata = { title: "Contact", description: "Contact Blue Lizard for technical questions, project feedback, collaboration inquiries, or general communication.", alternates: { canonical: "/contact" } };
+export const metadata = pageMetadata({ title: "Contact", description: "Contact Blue Lizard for technical questions, project feedback, collaboration inquiries, or general communication.", path: "/contact", image: "/og/contact.png", imageAlt: "Blue Lizard Contact: Let's talk engineering." });
 
 const email = "contact@bluelizard.sbs";
 

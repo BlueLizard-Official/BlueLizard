@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
 import { CTA, PageIntro, TechnicalDiagram } from "../components/ui";
+import { pageMetadata } from "../lib/metadata";
 
-export const metadata: Metadata = { title: "About Blue Lizard", description: "Understand Blue Lizard's structured approach to backend engineering and AI-assisted development.", alternates: { canonical: "/about" } };
+export const metadata = pageMetadata({ title: "About Blue Lizard", description: "Understand Blue Lizard's structured approach to backend engineering and AI-assisted development.", path: "/about", image: "/og/about.png", imageAlt: "Blue Lizard About: Engineering with structure." });
 
 export default function AboutPage() {
   return <><PageIntro eyebrow="About the project" title="A shared model for backend work." description="Blue Lizard is a technical project exploring how backend applications can be designed, checked, built, and served through a more structured workflow." />

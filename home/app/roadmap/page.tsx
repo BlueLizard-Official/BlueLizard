@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
 import { CTA, PageIntro } from "../components/ui";
+import { pageMetadata } from "../lib/metadata";
 
-export const metadata: Metadata = { title: "Development Roadmap", description: "Blue Lizard development roadmap with planned, in-progress, and available areas of work.", alternates: { canonical: "/roadmap" } };
+export const metadata = pageMetadata({ title: "Development Roadmap", description: "Blue Lizard development roadmap with planned, in-progress, and available areas of work.", path: "/roadmap", image: "/og/roadmap.png", imageAlt: "Blue Lizard Roadmap: Building Blue Lizard." });
 
 const roadmap = [
   ["Foundation", "In progress", "Establish the project surface that other capabilities can build on.", ["CLI structure", "Configuration handling", "Project discovery"]],

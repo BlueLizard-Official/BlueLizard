@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
 import { CTA, PageIntro, SectionHeading } from "../components/ui";
+import { pageMetadata } from "../lib/metadata";
 
-export const metadata: Metadata = { title: "Features", description: "Explore Blue Lizard's intended blueprint, build, security, MCP, runtime, and diagnostics capabilities.", alternates: { canonical: "/features" } };
+export const metadata = pageMetadata({ title: "Features", description: "Explore Blue Lizard's intended blueprint, build, security, MCP, runtime, and diagnostics capabilities.", path: "/features", image: "/og/features.png", imageAlt: "Blue Lizard Features: Tools for structured backend development." });
 
 const items = [
   ["Blueprint-based backend representation", "Describe backend structure as a shared model of services, operations, and relationships. This addresses the gap between scattered source files and the system those files form.", "In progress", "The blueprint direction is part of the active project scope; exact syntax and persistence are evolving."],

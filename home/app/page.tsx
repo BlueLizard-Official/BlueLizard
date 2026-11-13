@@ -1,13 +1,9 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { CodeBlock } from "./components/code-block";
+import { pageMetadata } from "./lib/metadata";
 import { CTA, Eyebrow, FeatureCard, SectionHeading, TechnicalDiagram } from "./components/ui";
 
-export const metadata: Metadata = {
-  title: "Backend development, built with structure.",
-  description: "Blue Lizard is an actively developed toolkit for structured backend workflows, build tooling, security analysis, and AI-assisted development.",
-  alternates: { canonical: "/" },
-};
+export const metadata = pageMetadata({ title: "Backend development, built with structure.", description: "Blue Lizard is an actively developed toolkit for structured backend workflows, build tooling, security analysis, and AI-assisted development.", path: "/", image: "/og/home.png", imageAlt: "Blue Lizard homepage: Backend development, built with structure." });
 
 const features = [
   ["01", "Structured Backend Blueprints", "Graph-based representations of backend logic, including nodes, connections, and typed operations.", "In progress"],
