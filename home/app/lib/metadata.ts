@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 export const SITE_URL = "https://bluelizard.sbs";
+export const OG_IMAGE_BASE_URL = "https://www.bluelizard.sbs";
 
 type PageMetadataInput = {
   title: string;
@@ -12,7 +13,7 @@ type PageMetadataInput = {
 
 export function pageMetadata({ title, description, path, image, imageAlt }: PageMetadataInput): Metadata {
   const url = `${SITE_URL}${path}`;
-  const imageUrl = `${SITE_URL}${image}`;
+  const imageUrl = `${OG_IMAGE_BASE_URL}${image}`;
   return {
     title,
     description,
