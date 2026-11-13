@@ -1,0 +1,29 @@
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+
+const navItems = [["Features", "/features"], ["CLI", "/cli"], ["MCP", "/mcp"], ["Roadmap", "/roadmap"], ["About", "/about"]] as const;
+
+export function SiteHeader() {
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+  const close = () => setOpen(false);
+  return <header className="site-header">
+    <div className="container header-inner">
+      <Link className="wordmark" href="/" aria-label="Blue Lizard home" onClick={close}><Image className="wordmark-logo" src="/logo.png" alt="" width={36} height={36} priority /><span>Blue Lizard</span></Link>
+      <nav className="desktop-nav" aria-label="Primary navigation">
+        {navItems.map(([label, href]) => <Link className="nav-link" href={href} key={href} aria-current={pathname === href ? "page" : undefined}>{label}</Link>)}
+        <Link className="nav-link" href="/contact" aria-current={pathname === "/contact" ? "page" : undefined}>Contact</Link>
+        <Link className="button-primary header-cta" href="/about">Explore</Link>
+      </nav>
+      <button className="mobile-menu-button" type="button" aria-expanded={open} aria-controls="mobile-navigation" aria-label={open ? "Close navigation menu" : "Open navigation menu"} onClick={() => setOpen((current) => !current)}><span className="menu-icon" aria-hidden="true" /></button>
+    </div>
+    {open ? <nav id="mobile-navigation" className="mobile-nav" aria-label="Mobile navigation">
+      {[...navItems, ["Contact", "/contact"] as const].map(([label, href]) => <Link href={href} key={href} onClick={close} aria-current={pathname === href ? "page" : undefined}>{label}</Link>)}
+      <Link className="button-primary" href="/about" onClick={close}>Explore Blue Lizard</Link>
+    </nav> : null}
+  </header>;
+}
