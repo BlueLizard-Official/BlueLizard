@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
@@ -16,5 +17,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body><div className="site-shell"><SiteHeader /><main className="site-main">{children}</main><SiteFooter /></div></body></html>;
+  return <html lang="en"><body><div className="site-shell"><SiteHeader /><main className="site-main">{children}</main><SiteFooter /></div><Script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2976360252251832" strategy="beforeInteractive" crossOrigin="anonymous" /></body></html>;
 }
