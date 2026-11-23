@@ -1,5 +1,11 @@
 This is a [Next.js](https://nextjs.org) project for Blue Lizard.
 
+## Pre-launch website
+
+Blue Lizard is presented as a pre-launch product with an MVP target of December 3, 2026. The homepage, `/features`, `/mcp`, `/pricing`, `/cli`, and `/roadmap` describe the intended blueprint, security, MCP, pricing, build-output, and developer workflows. Planned capabilities are labeled as planned or in progress; the site does not claim a public compiler, MCP server, payment checkout, or completed security audit.
+
+The public waitlist is available at `/waitlist`. It accepts registrations through `/api/waitlist`, but it does not expose waitlist records or database credentials to the browser. Production deployments also need a trusted edge rate limiter; an in-memory limiter is not treated as reliable across serverless instances.
+
 ## LioranDB waitlist integration
 
 The reusable waitlist persistence layer lives in [app/lib/liorandb.ts](app/lib/liorandb.ts) and [app/lib/waitlist-repository.ts](app/lib/waitlist-repository.ts). Both modules are explicitly server-only. Copy `.env.example` to `.env.local` and provide:
@@ -8,6 +14,9 @@ The reusable waitlist persistence layer lives in [app/lib/liorandb.ts](app/lib/l
 LIORANDB_URI=liorandb+https://username:password@db.example.com:443/default
 LIORANDB_DATABASE=blue_lizard
 LIORANDB_WAITLIST_COLLECTION=waitlist
+
+WAITLIST_EDGE_RATE_LIMIT_URL=https://rate-limit.example.com/check
+WAITLIST_EDGE_RATE_LIMIT_TOKEN=replace-with-server-only-token
 ```
 
 The URI is kept in a non-`NEXT_PUBLIC_` environment variable so credentials are not exposed to browser bundles. For remote production deployments, use a TLS URI such as `liorandb+https://...`; reserved URI characters in credentials must be percent-encoded.

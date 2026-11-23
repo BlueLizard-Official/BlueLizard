@@ -3,16 +3,15 @@ import Script from "next/script";
 import "./globals.css";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
-
-const siteUrl = "https://bluelizard.sbs";
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "./lib/metadata";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title: { default: "Blue Lizard — Backend development, built with structure.", template: "%s — Blue Lizard" },
-  description: "Blue Lizard is an actively developed toolkit for structured backend workflows, build tooling, security analysis, and AI-assisted development.",
-  alternates: { canonical: siteUrl },
-  openGraph: { type: "website", url: siteUrl, siteName: "Blue Lizard", title: "Blue Lizard — Backend development, built with structure.", description: "An actively developed toolkit for designing, validating, building, and serving backend applications." },
-  twitter: { card: "summary", title: "Blue Lizard — Backend development, built with structure.", description: "An actively developed toolkit for structured backend workflows and AI-assisted development." },
+  metadataBase: new URL(SITE_URL),
+  title: { default: SITE_TITLE, template: "%s | Blue Lizard" },
+  description: SITE_DESCRIPTION,
+  alternates: { canonical: SITE_URL },
+  openGraph: { type: "website", url: SITE_URL, siteName: "Blue Lizard", title: SITE_TITLE, description: SITE_DESCRIPTION, images: [{ url: "/og/home.png", width: 1200, height: 630, alt: "Blue Lizard visual backend blueprints for AI agents." }] },
+  twitter: { card: "summary_large_image", title: SITE_TITLE, description: SITE_DESCRIPTION, images: ["/og/home.png"] },
   icons: { icon: "/favicon.ico" },
 };
 

@@ -787,7 +787,6 @@ button { font: inherit; }
 }
 
 /* Pricing preview */
-.legacy-home-pricing { display: none; }
 .home-pricing-layout { display: grid; grid-template-columns: minmax(0, 0.78fr) minmax(360px, 1fr); gap: 70px; align-items: center; }
 .home-pricing-layout .section-heading { margin-bottom: 0; }
 .home-pricing-note { max-width: 600px; margin: 24px 0 0; color: var(--muted); font-family: var(--font-site-mono), monospace; font-size: 11px; line-height: 1.6; }

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 
 export const SITE_URL = "https://bluelizard.sbs";
 export const OG_IMAGE_BASE_URL = "https://www.bluelizard.sbs";
+export const SITE_TITLE = "Blue Lizard | Visual Backends for AI Agents";
+export const SITE_DESCRIPTION = "Design backends with visual blueprints, connect AI coding agents through MCP, and generate deployable backend projects. Join the Blue Lizard MVP waitlist.";
 export const MCP_PAGE_TITLE = "Your AI agent. Our blueprints.";
 export const MCP_PAGE_DESCRIPTION = "Blue Lizard’s planned MCP direction lets compatible AI coding agents work through explicit backend blueprints instead of unstructured source-code generation.";
 export const PRICING_PAGE_TITLE = "Blue Lizard Developer License";
