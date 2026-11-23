@@ -785,3 +785,66 @@ button { font: inherit; }
   .build-output-panel .code-content { min-height: 280px; padding: 16px; font-size: 12px; }
   .build-output-ownership { grid-template-columns: 1fr; gap: 22px; margin-top: 38px; }
 }
+
+/* Pricing preview */
+.legacy-home-pricing { display: none; }
+.home-pricing-layout { display: grid; grid-template-columns: minmax(0, 0.78fr) minmax(360px, 1fr); gap: 70px; align-items: center; }
+.home-pricing-layout .section-heading { margin-bottom: 0; }
+.home-pricing-note { max-width: 600px; margin: 24px 0 0; color: var(--muted); font-family: var(--font-site-mono), monospace; font-size: 11px; line-height: 1.6; }
+.home-pricing-layout .text-link { display: inline-block; margin-top: 24px; }
+.developer-pricing-card { padding: 28px; border: 1px solid #2d6f9d; background: var(--surface-card); box-shadow: inset 0 3px 0 #2d6f9d, 0 18px 42px rgba(38, 37, 30, 0.08); }
+.developer-pricing-card-header { display: flex; align-items: start; justify-content: space-between; gap: 24px; }
+.developer-pricing-card-header .pricing-card-label { display: block; margin: 0; color: #2d6f9d; font-family: var(--font-site-mono), monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; }
+.developer-pricing-card-header h3 { margin: 12px 0 0; color: var(--ink); font-size: 28px; font-weight: 500; letter-spacing: -0.045em; line-height: 1.1; }
+.developer-pricing-status { padding: 6px 8px; border: 1px solid #e0b49b; background: #fff8f3; color: #ad5e34; font-family: var(--font-site-mono), monospace; font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; }
+.developer-pricing-price { display: flex; align-items: baseline; gap: 2px; margin-top: 34px; color: var(--ink); }
+.developer-pricing-currency { color: #2d6f9d; font-size: 28px; font-weight: 500; }
+.developer-pricing-price strong { font-size: clamp(54px, 7vw, 82px); font-weight: 400; letter-spacing: -0.08em; line-height: 0.95; }
+.developer-pricing-period { margin-left: 8px; color: var(--muted); font-family: var(--font-site-mono), monospace; font-size: 12px; }
+.developer-pricing-billing { margin: 12px 0 0; color: var(--body); font-size: 14px; }
+.developer-pricing-features { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 24px; margin: 30px 0 0; padding: 18px 0 0; border-top: 1px solid var(--hairline); list-style: none; }
+.developer-pricing-features li { display: flex; align-items: baseline; gap: 9px; padding: 9px 0; color: var(--body); font-size: 13px; line-height: 1.45; }
+.developer-pricing-features li span { color: #2d6f9d; font-family: var(--font-site-mono), monospace; font-size: 12px; }
+.developer-pricing-card-footer { display: flex; align-items: end; justify-content: space-between; gap: 22px; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--hairline); }
+.developer-pricing-card-footer p { max-width: 330px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+.developer-pricing-card-footer .button-primary { white-space: nowrap; }
+.pricing-page-section { padding: 86px 0 112px; border-bottom: 1px solid var(--hairline); background: #eef2f1; }
+.pricing-page-intro { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 70px; align-items: end; }
+.pricing-page-intro h2 { max-width: 720px; margin: 0; color: var(--ink); font-size: clamp(38px, 5.4vw, 72px); font-weight: 400; letter-spacing: -0.07em; line-height: 1.02; }
+.pricing-page-intro p { max-width: 650px; margin: 24px 0 0; color: var(--body); font-size: 17px; line-height: 1.65; }
+.pricing-mvp-target { display: grid; gap: 10px; padding-bottom: 8px; color: var(--body); font-family: var(--font-site-mono), monospace; font-size: 11px; line-height: 1.5; }
+.pricing-mvp-target span { color: #2d6f9d; text-transform: uppercase; }
+.pricing-mvp-target strong { color: var(--ink); font-family: var(--font-site-sans), sans-serif; font-size: 20px; font-weight: 500; letter-spacing: -0.035em; }
+.pricing-page-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.55fr); gap: 18px; align-items: stretch; margin-top: 64px; }
+.pricing-preview-aside { display: flex; flex-direction: column; padding: 26px; border: 1px solid var(--hairline-strong); background: var(--surface-card); }
+.pricing-preview-aside-mark { color: #e18c5a; font-family: var(--font-site-mono), monospace; font-size: 22px; }
+.pricing-preview-aside h3 { margin: 76px 0 0; color: var(--ink); font-size: 26px; font-weight: 500; letter-spacing: -0.045em; }
+.pricing-preview-aside p { margin: 12px 0 0; color: var(--body); font-size: 14px; line-height: 1.65; }
+.pricing-preview-aside-rule { width: 42px; height: 1px; margin-top: auto; background: #e18c5a; }
+.pricing-preview-aside > span:last-child { margin-top: 14px; color: var(--muted); font-family: var(--font-site-mono), monospace; font-size: 10px; line-height: 1.5; }
+.pricing-faq-section { background: var(--canvas-soft); }
+.pricing-faq-grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr); gap: 82px; align-items: start; }
+.pricing-faq-grid .section-heading { margin-bottom: 0; }
+
+@media (max-width: 1000px) {
+  .home-pricing-layout, .pricing-page-intro { gap: 42px; }
+  .pricing-page-grid { grid-template-columns: minmax(0, 1fr) minmax(240px, 0.62fr); }
+}
+
+@media (max-width: 900px) {
+  .home-pricing-layout, .pricing-page-intro, .pricing-page-grid, .pricing-faq-grid { grid-template-columns: 1fr; }
+  .pricing-mvp-target { padding: 16px 0 0; border-top: 1px solid var(--hairline); }
+  .pricing-preview-aside { min-height: 260px; }
+  .pricing-preview-aside h3 { margin-top: 44px; }
+  .pricing-faq-grid { gap: 42px; }
+}
+
+@media (max-width: 600px) {
+  .developer-pricing-card { padding: 20px; }
+  .developer-pricing-card-header { align-items: start; flex-direction: column; gap: 12px; }
+  .developer-pricing-price { margin-top: 28px; }
+  .developer-pricing-features { grid-template-columns: 1fr; }
+  .developer-pricing-card-footer { align-items: start; flex-direction: column; }
+  .developer-pricing-card-footer .button-primary { width: 100%; text-align: center; }
+  .pricing-page-section { padding: 60px 0 80px; }
+}

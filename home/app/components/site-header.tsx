@@ -5,7 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-const navItems = [["Blueprint", "/#blueprint"], ["Platform", "/features"], ["MCP", "/mcp"], ["Roadmap", "/roadmap"]] as const;
+const navItems = [["Blueprint", "/#blueprint"], ["Platform", "/features"], ["MCP", "/mcp"], ["Pricing", "/pricing"], ["Roadmap", "/roadmap"]] as const;
 
 export function SiteHeader() {
   const pathname = usePathname();

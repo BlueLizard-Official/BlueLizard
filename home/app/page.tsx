@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PricingCard } from "./components/pricing-card";
 import { BuildOutputPreview } from "./components/build-output-preview";
 import { BlueprintPreview } from "./components/blueprint-preview";
 import { CTA, Eyebrow, SectionHeading, StatusPill } from "./components/ui";
@@ -92,6 +93,10 @@ export default function Home() {
       <BuildOutputPreview />
 
       <section className="blueprint-section" id="pricing">
+        <div className="container home-pricing-layout"><div><SectionHeading eyebrow="Pricing preview" title="One straightforward plan for the MVP." description="A planned monthly Developer License with a clear focus: visual backend infrastructure that remains in the developer's hands." /><p className="home-pricing-note">MVP target: December 3, 2026 · Pricing is planned for the upcoming release and may evolve before public availability.</p><Link className="text-link" href="/pricing">View the pricing preview</Link></div><PricingCard compact /></div>
+      </section>
+
+      <section className="blueprint-section legacy-home-pricing" id="pricing-legacy">
         <div className="container"><SectionHeading eyebrow="Pricing" title="Start with the foundation." description="The MVP pricing model is intentionally simple while the product surface is being validated." /><div className="pricing-grid"><article className="pricing-card pricing-card-featured"><div className="pricing-card-label">Early access</div><h3>Join the waitlist</h3><p>Get launch updates and help shape the first version of visual backend infrastructure.</p><div className="pricing-card-footer"><span>Coming with the MVP</span><Link className="button-primary" href="/waitlist">Join the Waitlist</Link></div></article><article className="pricing-card"><div className="pricing-card-label">Teams</div><h3>Defined with users</h3><p>Team workflows, collaboration, and deployment surfaces will be shaped around early product feedback.</p><div className="pricing-card-footer"><span>Details to follow</span></div></article><article className="pricing-card"><div className="pricing-card-label">Open direction</div><h3>Transparent by default</h3><p>Follow the roadmap as capabilities move from concept to verified implementation.</p><div className="pricing-card-footer"><Link className="text-link" href="/roadmap">Read the roadmap <span className="text-link-arrow" aria-hidden="true">↗</span></Link></div></article></div></div>
       </section>
 
