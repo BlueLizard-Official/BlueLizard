@@ -25,8 +25,8 @@ export function BlueprintConnection({ from, to, tone = "neutral" }: BlueprintCon
   return (
     <g className={`blueprint-connection blueprint-connection-${tone}`} aria-hidden="true">
       <path d={connectionPath(from, to)} vectorEffect="non-scaling-stroke" />
-      <circle cx={from.x} cy={from.y} r="0.75" vectorEffect="non-scaling-stroke" />
-      <circle cx={to.x} cy={to.y} r="0.75" vectorEffect="non-scaling-stroke" />
+      <circle cx={from.x} cy={from.y} r="0.40" vectorEffect="non-scaling-stroke" />
+      <circle cx={to.x} cy={to.y} r="0.40" vectorEffect="non-scaling-stroke" />
     </g>
   );
 }

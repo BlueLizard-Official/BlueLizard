@@ -175,7 +175,7 @@ export function BuildOutputPreview() {
             <h2 id="build-output-title">From blueprint to deployable backend.</h2>
             <p className="build-output-lede">Your backend. Your code. Your infrastructure.</p>
           </div>
-          <p className="build-output-description">Blue Lizard aims to turn an inspectable blueprint into artifacts developers can own, review, adapt, and deploy to their own VPS. These previews are examples until actual compiler output is available.</p>
+          <p className="build-output-description">BlueLizard aims to turn an inspectable blueprint into artifacts developers can own, review, adapt, and deploy to their own VPS. These previews are examples until actual compiler output is available.</p>
         </div>
 
         <div className="build-output-pipeline" aria-label="Conceptual backend compilation pipeline">
@@ -192,7 +192,7 @@ export function BuildOutputPreview() {
           </div>
         </div>
 
-        <div className="build-output-ownership"><div><span className="blueprint-kicker">Infrastructure ownership</span><h3>Deploy the generated output where you operate.</h3></div><p>Blue Lizard is intended to produce portable artifacts for your own VPS or deployment environment, rather than forcing you into Blue Lizard hosting. Reliability still depends on environment configuration, TLS, backups, secrets management, updates, monitoring, and operator review.</p></div>
+        <div className="build-output-ownership"><div><span className="blueprint-kicker">Infrastructure ownership</span><h3>Deploy the generated output where you operate.</h3></div><p>BlueLizard is intended to produce portable artifacts for your own VPS or deployment environment, rather than forcing you into BlueLizard hosting. Reliability still depends on environment configuration, TLS, backups, secrets management, updates, monitoring, and operator review.</p></div>
       </div>
     </section>
   );

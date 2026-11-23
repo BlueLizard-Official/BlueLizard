@@ -44,7 +44,7 @@ export default function MCPPage() {
               <Eyebrow>From code generation to system design</Eyebrow>
               <h2>Give the agent a structure it can reason about.</h2>
               <p>Instead of asking an AI agent to generate an entire backend as plain code, let it construct explicit backend blueprints that can be inspected, edited and compiled.</p>
-              <p className="mcp-disclaimer">The MCP server, tool surface, and integrations shown here are planned concepts for the Blue Lizard product direction. No public MCP server is available yet.</p>
+              <p className="mcp-disclaimer">The MCP server, tool surface, and integrations shown here are planned concepts for the BlueLizard product direction. No public MCP server is available yet.</p>
             </div>
             <div className="mcp-intro-aside"><span className="mcp-aside-number">01</span><strong>Agent proposes.</strong><span>Blueprint makes it legible.</span></div>
           </div>
@@ -91,7 +91,7 @@ export default function MCPPage() {
         </div>
       </section>
 
-      <CTA title="Help shape the agent workflow." description="Join the MVP waitlist for updates as Blue Lizard moves from conceptual blueprints toward a verified, developer-controlled product surface." actionLabel="Join MVP Waitlist" actionHref="/waitlist" />
+      <CTA title="Help shape the agent workflow." description="Join the MVP waitlist for updates as BlueLizard moves from conceptual blueprints toward a verified, developer-controlled product surface." actionLabel="Join MVP Waitlist" actionHref="/waitlist" />
     </>
   );
 }

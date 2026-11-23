@@ -51,7 +51,7 @@ export function WaitlistForm() {
         form.reset();
         setState({
           status: "success",
-          message: result.message ?? "You're on the list. We'll contact you with Blue Lizard MVP updates.",
+          message: result.message ?? "You're on the list. We'll contact you with BlueLizard MVP updates.",
         });
         return;
       }
@@ -73,7 +73,7 @@ export function WaitlistForm() {
         <span className="waitlist-success-mark" aria-hidden="true">✓</span>
         <p className="waitlist-form-kicker">Registration received</p>
         <h2>{state.message}</h2>
-        <p>Your details are stored privately for Blue Lizard launch communications. You can request deletion at any time from the privacy contact.</p>
+        <p>Your details are stored privately for BlueLizard launch communications. You can request deletion at any time from the privacy contact.</p>
         <button className="button-secondary" type="button" onClick={() => setState({ status: "idle" })}>Add another registration</button>
       </div>
     );
@@ -94,10 +94,10 @@ export function WaitlistForm() {
         <div className="waitlist-field"><label htmlFor="waitlist-agent">Preferred AI coding agent</label><select id="waitlist-agent" name="preferredAgent" defaultValue=""><option value="">Select an option</option>{PREFERRED_AGENTS.map((agent) => <option key={agent} value={agent}>{agent}</option>)}</select><FieldError id="waitlist-agent-error" message={fields?.preferredAgent} /></div>
         <div className="waitlist-field waitlist-field-wide"><label htmlFor="waitlist-github">GitHub profile URL <span className="waitlist-optional">Optional</span></label><input id="waitlist-github" name="githubUrl" type="url" autoComplete="url" maxLength={300} placeholder="https://github.com/you" aria-invalid={Boolean(fields?.githubUrl)} aria-describedby={fields?.githubUrl ? "waitlist-github-error" : undefined} /><FieldError id="waitlist-github-error" message={fields?.githubUrl} /></div>
         <div className="waitlist-field waitlist-field-wide"><label htmlFor="waitlist-stack">Current backend stack <span className="waitlist-optional">Optional</span></label><input id="waitlist-stack" name="backendStack" type="text" maxLength={160} placeholder="TypeScript, Postgres, Redis..." aria-invalid={Boolean(fields?.backendStack)} aria-describedby={fields?.backendStack ? "waitlist-stack-error" : undefined} /><FieldError id="waitlist-stack-error" message={fields?.backendStack} /></div>
-        <div className="waitlist-field waitlist-field-full"><label htmlFor="waitlist-use-case">What would you build with Blue Lizard? <span className="waitlist-optional">Optional</span></label><textarea id="waitlist-use-case" name="useCase" maxLength={1000} rows={5} placeholder="Tell us about the backend system you want to make clearer..." aria-invalid={Boolean(fields?.useCase)} aria-describedby={fields?.useCase ? "waitlist-use-case-error" : undefined} /><FieldError id="waitlist-use-case-error" message={fields?.useCase} /></div>
+        <div className="waitlist-field waitlist-field-full"><label htmlFor="waitlist-use-case">What would you build with BlueLizard? <span className="waitlist-optional">Optional</span></label><textarea id="waitlist-use-case" name="useCase" maxLength={1000} rows={5} placeholder="Tell us about the backend system you want to make clearer..." aria-invalid={Boolean(fields?.useCase)} aria-describedby={fields?.useCase ? "waitlist-use-case-error" : undefined} /><FieldError id="waitlist-use-case-error" message={fields?.useCase} /></div>
       </div>
 
-      <label className={`waitlist-consent${fields?.consent ? " has-error" : ""}`}><input name="consent" type="checkbox" required aria-invalid={Boolean(fields?.consent)} aria-describedby={fields?.consent ? "waitlist-consent-error" : undefined} /><span>I agree to receive Blue Lizard waitlist-related communications and MVP updates. <span aria-hidden="true">*</span></span></label>
+      <label className={`waitlist-consent${fields?.consent ? " has-error" : ""}`}><input name="consent" type="checkbox" required aria-invalid={Boolean(fields?.consent)} aria-describedby={fields?.consent ? "waitlist-consent-error" : undefined} /><span>I agree to receive BlueLizard waitlist-related communications and MVP updates. <span aria-hidden="true">*</span></span></label>
       <FieldError id="waitlist-consent-error" message={fields?.consent} />
       <div className="waitlist-form-footer"><p>We store the information you choose to share for launch communications. No public directory, IP address, or user-agent fingerprint is created by this form.</p><button className="button-primary" type="submit" disabled={state.status === "submitting"}>{state.status === "submitting" ? "Joining..." : "Join the Waitlist"}</button></div>
     </form>

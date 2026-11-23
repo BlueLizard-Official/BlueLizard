@@ -1,8 +1,8 @@
-This is a [Next.js](https://nextjs.org) project for Blue Lizard.
+This is a [Next.js](https://nextjs.org) project for BlueLizard.
 
 ## Pre-launch website
 
-Blue Lizard is presented as a pre-launch product with an MVP target of December 3, 2026. The homepage, `/features`, `/mcp`, `/pricing`, `/cli`, and `/roadmap` describe the intended blueprint, security, MCP, pricing, build-output, and developer workflows. Planned capabilities are labeled as planned or in progress; the site does not claim a public compiler, MCP server, payment checkout, or completed security audit.
+BlueLizard is presented as a pre-launch product with an MVP target of December 3, 2026. The homepage, `/features`, `/mcp`, `/pricing`, `/cli`, and `/roadmap` describe the intended blueprint, security, MCP, pricing, build-output, and developer workflows. Planned capabilities are labeled as planned or in progress; the site does not claim a public compiler, MCP server, payment checkout, or completed security audit.
 
 The public waitlist is available at `/waitlist`. It accepts registrations through `/api/waitlist`, but it does not expose waitlist records or database credentials to the browser. Production deployments also need a trusted edge rate limiter; an in-memory limiter is not treated as reliable across serverless instances.
 
@@ -26,6 +26,18 @@ The database module uses the documented `LioranDBClient` API with gRPC data tran
 On first repository use, the integration ensures the documented unique `email` index named `waitlist_email_unique`. Emails are trimmed and lowercased before reads and writes. Concurrent duplicate submissions are protected by that server-side unique index; a duplicate-key response becomes `WaitlistDuplicateError`. Inserts also use a deterministic idempotency key derived from the normalized email for safe retry handling.
 
 The installed driver exposes MongoDB-shaped names but is not the MongoDB driver. It does not expose MongoDB sessions, transactions, change streams, `replaceOne`, `bulkWrite`, or `findById`; no such assumptions are made here. The repository currently exposes `findByEmail()` and `createEntry()` because an ID lookup is not required by the waitlist flow.
+
+## Waitlist email notifications
+
+Set these server-side variables in the deployment environment to email the team after each new registration is saved:
+
+```text
+RESEND_API_KEY=replace-with-a-sending-only-key
+WAITLIST_NOTIFICATION_FROM="BlueLizard <waitlist@bluelizard.sbs>"
+WAITLIST_NOTIFICATION_TO=contact@bluelizard.sbs
+```
+
+The sender must use a domain verified in Resend. The recipient defaults to `contact@bluelizard.sbs`. The form saves registrations to LioranDB before attempting delivery. Failed sends are logged on the server and leave the saved registration available in LioranDB.
 
 ## Driver API inventory
 

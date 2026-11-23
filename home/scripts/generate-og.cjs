@@ -66,14 +66,14 @@ function base({ section, titleLines, descriptionLines, drawing }) {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${HEIGHT}" viewBox="0 0 ${WIDTH} ${HEIGHT}">
   <rect width="${WIDTH}" height="${HEIGHT}" fill="${C.canvas}" />
   <image href="${logoHref}" x="64" y="48" width="48" height="48" preserveAspectRatio="xMidYMid meet" />
-  ${text(128, 78, "BLUE LIZARD", { size: 14, fill: C.ink, weight: 600, spacing: 1.8 })}
+  ${text(128, 78, "BlueLizard", { size: 14, fill: C.ink, weight: 600, spacing: 1.8 })}
   ${text(128, 99, section, { size: 11, fill: C.muted, weight: 600, spacing: 1.4 })}
   ${multiline(64, 190, titleLines, { size: 54, fill: C.ink, weight: 400, spacing: -1.6, lineHeight: 1.04 })}
   ${multiline(64, 360, descriptionLines, { size: 19, fill: C.body, weight: 400, lineHeight: 1.45 })}
   ${drawing}
   ${line(64, 566, 1136, 566, { stroke: C.hairline })}
   ${text(64, 594, "bluelizard.sbs", { size: 12, fill: C.muted, family: MONO, spacing: 0.4 })}
-  ${text(1136, 594, "BLUE LIZARD / DEVELOPER TOOLING", { size: 11, fill: C.muted, weight: 600, spacing: 1.1, anchor: "end" })}
+  ${text(1136, 594, "BlueLizard / DEVELOPER TOOLING", { size: 11, fill: C.muted, weight: 600, spacing: 1.1, anchor: "end" })}
   </svg>`;
 }
 
@@ -98,19 +98,19 @@ const images = {
   }),
   cli: base({
     section: "04 / CLI",
-    titleLines: ["Blue Lizard CLI"],
+    titleLines: ["BlueLizard CLI"],
     descriptionLines: ["Build and serve through a consistent", "workflow."],
     drawing: `${rect(660, 128, 476, 300, { fill: C.surface, stroke: C.hairlineStrong })}${line(660, 180, 1136, 180)}${text(686, 162, "SHELL / EVOLVING WORKFLOW", { size: 11, fill: C.muted, weight: 600, spacing: 1.1 })}${shellLine(700, 238, "lizard build", C.ink)}${shellLine(700, 286, "lizard serve", C.ink)}${line(700, 338, 1096, 338, { stroke: C.hairline })}${text(700, 380, "@bluelizard/cli", { size: 14, fill: C.body, family: MONO })}${text(700, 410, "availability requires verification", { size: 12, fill: C.muted, family: MONO })}`,
   }),
   mcp: base({
     section: "05 / MCP",
-    titleLines: ["Blue Lizard MCP"],
+    titleLines: ["BlueLizard MCP"],
     descriptionLines: ["Structured tooling for AI coding agents."],
-    drawing: `${line(844, 170, 844, 430)}${line(844, 190, 1010, 190)}${line(844, 300, 1010, 300)}${line(844, 410, 1010, 410)}${node(870, 164, 240, "AI AGENT", C.edit)}${node(870, 274, 240, "MCP SERVER", C.read)}${node(870, 384, 240, "BLUE LIZARD CORE", C.grep)}`,
+    drawing: `${line(844, 170, 844, 430)}${line(844, 190, 1010, 190)}${line(844, 300, 1010, 300)}${line(844, 410, 1010, 410)}${node(870, 164, 240, "AI AGENT", C.edit)}${node(870, 274, 240, "MCP SERVER", C.read)}${node(870, 384, 240, "BlueLizard CORE", C.grep)}`,
   }),
   roadmap: base({
     section: "06 / ROADMAP",
-    titleLines: ["Building Blue Lizard."],
+    titleLines: ["Building BlueLizard."],
     descriptionLines: ["An evolving developer tooling platform."],
     drawing: `${rect(812, 120, 324, 44, { fill: C.surface, stroke: C.hairlineStrong })}${text(830, 148, "ACTIVE DEVELOPMENT", { size: 12, fill: C.ink, weight: 600, spacing: 1.1 })}${line(660, 370, 1120, 370, { stroke: C.ink })}${["FOUNDATION", "BLUEPRINTS", "BUILD", "SECURITY", "MCP"].map((label, index) => { const x = 660 + index * 115; return `${rect(x, 344, 92, 52, { fill: C.canvasSoft, stroke: index < 2 ? C.ink : C.hairlineStrong })}${text(x + 46, 375, label, { size: 10, fill: C.ink, family: MONO, anchor: "middle", spacing: 0.25 })}`; }).join("")}`,
   }),
@@ -129,7 +129,7 @@ const images = {
   terms: base({
     section: "09 / TERMS",
     titleLines: ["Terms of Use"],
-    descriptionLines: ["Information about using Blue Lizard."],
+    descriptionLines: ["Information about using BlueLizard."],
     drawing: `${text(736, 160, "DOCUMENT / TERMS", { size: 11, fill: C.muted, weight: 600, spacing: 1.1 })}${rect(736, 184, 400, 68, { fill: C.surface, stroke: C.hairlineStrong })}${rect(736, 268, 400, 68, { fill: C.surface, stroke: C.hairlineStrong })}${rect(736, 352, 400, 68, { fill: C.surface, stroke: C.hairlineStrong })}${text(760, 226, "01  INFORMATIONAL PURPOSE", { size: 11, fill: C.ink, family: MONO })}${text(760, 310, "02  NO UNSUPPORTED GUARANTEES", { size: 11, fill: C.ink, family: MONO })}${text(760, 394, "03  RESPONSIBLE USE", { size: 11, fill: C.ink, family: MONO })}`,
   }),
 };

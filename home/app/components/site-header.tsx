@@ -18,7 +18,7 @@ export function SiteHeader() {
   const close = () => setOpen(false);
   return <header className="site-header">
     <div className="container header-inner">
-      <Link className="wordmark" href="/" aria-label="Blue Lizard home" onClick={close}><Image className="wordmark-logo" src="/logo.png" alt="" width={36} height={36} priority /><span>Blue Lizard</span></Link>
+      <Link className="wordmark" href="/" aria-label="BlueLizard home" onClick={close}><Image className="wordmark-logo" src="/logo.png" alt="" width={36} height={36} priority /><span>BlueLizard</span></Link>
       <nav className="desktop-nav" aria-label="Primary navigation">
         {navItems.map(([label, href]) => <Link className="nav-link" href={href} key={href} aria-current={currentFor(pathname, href)}>{label}</Link>)}
         <Link className="nav-link" href="/about" aria-current={pathname === "/about" ? "page" : undefined}>About</Link>
