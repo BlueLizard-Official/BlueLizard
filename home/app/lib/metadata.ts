@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 
 export const SITE_URL = "https://bluelizard.sbs";
 export const OG_IMAGE_BASE_URL = "https://www.bluelizard.sbs";
+export const MCP_PAGE_TITLE = "Your AI agent. Our blueprints.";
+export const MCP_PAGE_DESCRIPTION = "Blue Lizard’s planned MCP direction lets compatible AI coding agents work through explicit backend blueprints instead of unstructured source-code generation.";
 
 type PageMetadataInput = {
   title: string;
@@ -34,3 +36,11 @@ export function pageMetadata({ title, description, path, image, imageAlt }: Page
     },
   };
 }
+
+export const MCP_PAGE_METADATA = pageMetadata({
+  title: MCP_PAGE_TITLE,
+  description: MCP_PAGE_DESCRIPTION,
+  path: "/mcp",
+  image: "/og/mcp.png",
+  imageAlt: "Blue Lizard conceptual MCP workflow for structured backend blueprints.",
+});
