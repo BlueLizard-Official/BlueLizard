@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BuildOutputPreview } from "./components/build-output-preview";
 import { BlueprintPreview } from "./components/blueprint-preview";
 import { CTA, Eyebrow, SectionHeading, StatusPill } from "./components/ui";
 import { pageMetadata } from "./lib/metadata";
@@ -87,6 +88,8 @@ export default function Home() {
           <div className="export-panel" aria-label="Conceptual build export preview"><div className="export-panel-header"><span>blue-lizard build</span><span className="export-status">ready to inspect</span></div><div className="export-panel-body"><div><span className="export-line-number">01</span><span className="export-keyword">blueprint</span> <span>signup</span></div><div><span className="export-line-number">02</span><span className="export-keyword">target</span> <span>service / production</span></div><div><span className="export-line-number">03</span><span className="export-keyword">checks</span> <span>policy, schema, dependency</span></div><div><span className="export-line-number">04</span><span className="export-keyword">export</span> <span className="export-value">deployable backend</span></div></div><div className="export-panel-footer">Conceptual workflow · implementation in progress</div></div>
         </div>
       </section>
+
+      <BuildOutputPreview />
 
       <section className="blueprint-section" id="pricing">
         <div className="container"><SectionHeading eyebrow="Pricing" title="Start with the foundation." description="The MVP pricing model is intentionally simple while the product surface is being validated." /><div className="pricing-grid"><article className="pricing-card pricing-card-featured"><div className="pricing-card-label">Early access</div><h3>Join the waitlist</h3><p>Get launch updates and help shape the first version of visual backend infrastructure.</p><div className="pricing-card-footer"><span>Coming with the MVP</span><Link className="button-primary" href="/waitlist">Join the Waitlist</Link></div></article><article className="pricing-card"><div className="pricing-card-label">Teams</div><h3>Defined with users</h3><p>Team workflows, collaboration, and deployment surfaces will be shaped around early product feedback.</p><div className="pricing-card-footer"><span>Details to follow</span></div></article><article className="pricing-card"><div className="pricing-card-label">Open direction</div><h3>Transparent by default</h3><p>Follow the roadmap as capabilities move from concept to verified implementation.</p><div className="pricing-card-footer"><Link className="text-link" href="/roadmap">Read the roadmap <span className="text-link-arrow" aria-hidden="true">↗</span></Link></div></article></div></div>
