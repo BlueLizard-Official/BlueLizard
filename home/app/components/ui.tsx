@@ -19,6 +19,10 @@ export function CTA({ title, description, actionLabel = "Read the roadmap", acti
   return <section className="cta-band"><div className="container"><h2>{title}</h2><p>{description}</p><Link className="button-primary" href={actionHref}>{actionLabel}<span aria-hidden="true">→</span></Link></div></section>;
 }
 
+export function StatusPill({ children, tone = "neutral" }: { children: React.ReactNode; tone?: "neutral" | "blue" | "orange" }) {
+  return <span className={`status-pill status-pill-${tone}`}><span className="status-pill-dot" aria-hidden="true" />{children}</span>;
+}
+
 export function TechnicalDiagram({ mcp = false }: { mcp?: boolean }) {
   const nodes = mcp ? [["AI Coding Agent", "Compatible tools and agents"], ["Blue Lizard MCP Server", "Structured tool interface"], ["Shared Blue Lizard Core", "Common project capabilities"], ["Project / Build / Validation", "Intended execution surface"]] : [["Developer / AI Agent", "A request, change, or inspection"], ["Blue Lizard CLI / MCP", "The intended entry point"], ["Structured Backend Blueprint", "Nodes, connections, and operations"], ["Validation & Build Pipeline", "Checks and build orchestration"], ["Backend Application", "A supported application target"]];
   return <div className="diagram" aria-label={mcp ? "Intended MCP architecture" : "Intended Blue Lizard architecture"}><div className="diagram-stack">{nodes.map(([title, description], index) => <div key={title} className="diagram-stack"><div className="diagram-node"><strong>{title}</strong><span>{description}</span></div>{index < nodes.length - 1 ? <div className="diagram-arrow" aria-hidden="true">↓</div> : null}</div>)}<p className="diagram-caption">Intended architecture; implementation details are evolving.</p></div></div>;

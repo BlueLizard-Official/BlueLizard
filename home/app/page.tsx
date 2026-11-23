@@ -1,41 +1,102 @@
 import Link from "next/link";
-import { CodeBlock } from "./components/code-block";
+import { BlueprintPreview } from "./components/blueprint-preview";
+import { CTA, Eyebrow, SectionHeading, StatusPill } from "./components/ui";
 import { pageMetadata } from "./lib/metadata";
-import { CTA, Eyebrow, FeatureCard, SectionHeading, TechnicalDiagram } from "./components/ui";
 
-export const metadata = pageMetadata({ title: "Backend development, built with structure.", description: "Blue Lizard is an actively developed toolkit for structured backend workflows, build tooling, security analysis, and AI-assisted development.", path: "/", image: "/og/home.png", imageAlt: "Blue Lizard homepage: Backend development, built with structure." });
+export const metadata = pageMetadata({
+  title: "Design the backend before you generate the code.",
+  description: "Blue Lizard turns backend development into visual blueprints that developers and AI coding agents can inspect, validate, and build.",
+  path: "/",
+  image: "/og/home.png",
+  imageAlt: "Blue Lizard visual backend blueprint preview",
+});
 
-const features = [
-  ["01", "Structured Backend Blueprints", "Graph-based representations of backend logic, including nodes, connections, and typed operations.", "In progress"],
-  ["02", "Build Workflows", "A CLI-oriented workflow for processing and building backend projects.", "In progress"],
-  ["03", "Security Analysis", "Planned validation and security checks for unsafe patterns and configuration issues.", "Planned"],
-  ["04", "MCP Integration", "An intended Model Context Protocol interface for compatible AI coding tools.", "Planned"],
-  ["05", "Backend Serving", "A consistent workflow for starting supported backend applications.", "Planned"],
-  ["06", "Developer Diagnostics", "Actionable feedback about configuration, build failures, and potential security problems.", "Planned"],
+const blueprintPrinciples = [
+  ["01", "Every dependency is visible", "Requests, policies, queues, stores, and responses live in one inspectable graph."],
+  ["02", "Every connection has a type", "Typed sockets make data flow and infrastructure boundaries legible to humans and agents."],
+  ["03", "Every change has context", "Blueprints give build systems and AI tools a shared model of what a backend change affects."],
+] as const;
+
+const workflowSteps = [
+  ["Define", "Place the endpoint, data, policy, and infrastructure nodes that describe the system you intend to build."],
+  ["Connect", "Draw explicit relationships between inputs, transformations, permissions, storage, and outputs."],
+  ["Build", "Use the blueprint as structured context for validation, code generation, deployment, and diagnostics."],
+] as const;
+
+const securityPrinciples = [
+  ["Least privilege", "Make permission boundaries part of the architecture, not a comment left behind in a source file."],
+  ["Inspectable flows", "Review how identity, policy, data, and infrastructure connect before a change reaches production."],
+  ["Safe agent actions", "Give AI coding agents bounded context and explicit operations instead of an unstructured workspace."],
+] as const;
+
+const faqs = [
+  ["Is the blueprint editor available today?", "Not yet. This homepage shows a conceptual preview of the visual system Blue Lizard is building. The nodes, connections, and inspector are illustrative, not a functioning editor."],
+  ["Is Blue Lizard a replacement for my framework?", "Blue Lizard is intended to sit above existing backend technologies as a structured design, validation, and build layer. The supported runtime surface will become clearer as the project develops."],
+  ["How will AI agents use a blueprint?", "The intended MCP integration gives compatible agents a structured representation of a backend so they can inspect relationships, propose changes, and return bounded diagnostics."],
+  ["When is the MVP launching?", "The current launch message is December 3, 2026. Join the waitlist for updates as the product moves toward its MVP."],
 ] as const;
 
 export default function Home() {
-  return <>
-    <section className="hero"><div className="container"><div className="hero-grid"><div>
-      <Eyebrow>Blue Lizard / Developer tooling</Eyebrow>
-      <h1>Backend development, built with structure.</h1>
-      <p className="hero-description">Blue Lizard is an actively developed toolkit for designing, validating, building, and serving backend applications through structured workflows and AI-assisted development.</p>
-      <div className="status-line">Under Active Development</div>
-      <div className="hero-actions"><Link className="button-dark" href="/about">Explore Blue Lizard <span aria-hidden="true">→</span></Link><Link className="text-link" href="/roadmap">View Development Roadmap <span className="text-link-arrow" aria-hidden="true">↗</span></Link></div>
-      <p className="hero-note">The interfaces and commands shown here describe an evolving project.</p>
-    </div><CodeBlock label="Planned workflow" code={`npm install -g @bluelizard/cli\n\nlizard build\nlizard serve`} note="Example workflow shown for direction; verify package availability before use." /></div>
-      <div className="preview-card" aria-label="Blue Lizard technical preview"><div className="preview-layout"><div className="preview-pane preview-sidebar"><strong>blue-lizard</strong><div className="selected">▸ blueprint</div><div>▸ config</div><div>▸ services</div><div>▸ checks</div><div>▸ output</div></div><div className="preview-pane preview-editor"><div><span className="line-number">01</span><span className="syntax">blueprint</span> <span className="value">backend</span></div><div><span className="line-number">02</span>  <span className="type">node</span> <span className="value">api</span></div><div><span className="line-number">03</span>  <span className="type">connect</span> <span className="value">api</span> <span className="operator">→</span> <span className="value">database</span></div><div><span className="line-number">04</span>  <span className="type">validate</span> <span className="value">security</span></div><div><span className="line-number">05</span>  <span className="syntax">build</span> <span className="argument">target=service</span></div></div><div className="preview-pane preview-chat"><strong>Diagnostics</strong><div className="chat-line">Blueprint structure ready for validation.</div><div className="chat-line">Build and security checks are evolving.</div></div></div></div>
-    </div></section>
+  return (
+    <>
+      <section className="blueprint-hero">
+        <div className="container">
+          <div className="blueprint-hero-grid">
+            <div className="blueprint-hero-copy">
+              <Eyebrow>Blue Lizard / Visual backend infrastructure</Eyebrow>
+              <h1>Stop generating code.<br /><span>Start designing backends.</span></h1>
+              <p className="blueprint-hero-description">Blue Lizard turns backend development into visual blueprints. Developers and AI coding agents can design, inspect, and build secure, deployable backend systems through structured nodes and connections.</p>
+              <div className="blueprint-hero-status"><StatusPill tone="orange">MVP launching December 3, 2026</StatusPill></div>
+              <div className="blueprint-hero-actions"><Link className="button-primary" href="/waitlist">Join the Waitlist</Link><a className="button-secondary" href="#blueprint">Explore the Blueprint</a></div>
+              <p className="blueprint-hero-footnote"><span aria-hidden="true">⌁</span> Designed for developers, teams, and AI agents that need more context.</p>
+            </div>
+            <div className="hero-side-note" aria-label="Product positioning"><div className="hero-side-rule" /><p>Backend infrastructure is already a graph. Blue Lizard makes the graph the interface.</p><span>01 / 05</span></div>
+          </div>
+          <BlueprintPreview />
+        </div>
+      </section>
 
-    <section className="section section-bordered"><div className="container"><SectionHeading eyebrow="The premise" title="A structured approach to backend engineering." /><p className="intro-copy">Backend work often spans fragmented tools, configuration layers, security requirements, and runtime concerns. Blue Lizard aims to make that work more understandable and maintainable by giving projects a shared representation that can be inspected, validated, and acted on by both developers and compatible AI tools.</p></div></section>
+      <section className="blueprint-section blueprint-section-dark" id="structure">
+        <div className="container">
+          <div className="section-intro-wide"><Eyebrow>Why structure matters</Eyebrow><h2>AI agents can write code. They still need a model of the system.</h2><p>Source code is where a backend ends up. It is not always the clearest place to understand the relationships that produced it. Blueprints give people and agents a shared surface for reasoning before implementation.</p></div>
+          <div className="principle-grid">{blueprintPrinciples.map(([number, title, description]) => <article className="principle-card" key={number}><span className="principle-number">{number}</span><h3>{title}</h3><p>{description}</p></article>)}</div>
+        </div>
+      </section>
 
-    <section className="section section-bordered"><div className="container"><SectionHeading eyebrow="Capabilities" title="Tools for the parts of backend work that need context." description="Each capability is being developed with an explicit status. Planned ideas are not presented as shipped features." /><div className="feature-grid">{features.map(([number, title, description, status]) => <FeatureCard key={number} number={number} title={title} description={description} status={status} />)}</div></div></section>
+      <section className="blueprint-section" id="workflow">
+        <div className="container">
+          <SectionHeading eyebrow="The workflow" title="A visual blueprint is a better starting point." description="The product is being shaped around a simple loop: make the system legible, make the change explicit, then make the build repeatable." />
+          <div className="workflow-grid">{workflowSteps.map(([title, description], index) => <article className="workflow-card" key={title}><div className="workflow-card-top"><span>0{index + 1}</span><span className="workflow-card-line" /></div><h3>{title}</h3><p>{description}</p></article>)}</div>
+        </div>
+      </section>
 
-    <section className="section section-bordered"><div className="container"><SectionHeading eyebrow="How it fits together" title="One intended path from idea to running service." description="The architecture below describes the direction of the project, not a claim that every layer is currently implemented." /><TechnicalDiagram /></div></section>
+      <section className="blueprint-section blueprint-section-lined" id="mcp-agents">
+        <div className="container feature-split">
+          <div><Eyebrow>For AI coding agents</Eyebrow><h2>MCP integrations with a map, not a blank workspace.</h2><p className="section-copy">The intended MCP layer gives compatible agents a structured way to inspect a project, understand backend relationships, and propose bounded changes. The blueprint becomes shared context between a person and the tool doing the work.</p><Link className="text-link" href="/mcp">Explore the MCP direction <span className="text-link-arrow" aria-hidden="true">↗</span></Link></div>
+          <div className="agent-panel"><div className="agent-panel-bar"><span>agent.context</span><span>structured</span></div><div className="agent-panel-body"><div className="agent-row"><span className="agent-key">inspect</span><span className="agent-value">signup.blueprint</span></div><div className="agent-row"><span className="agent-key">scope</span><span className="agent-value">policy + data + runtime</span></div><div className="agent-row"><span className="agent-key">change</span><span className="agent-value agent-value-orange">add rate limit node</span></div><div className="agent-divider" /><p>“I can see the request path, the policy checkpoint, and the dependency that must change.”</p></div></div>
+        </div>
+      </section>
 
-    <section className="section section-bordered"><div className="container"><div className="status-band"><div><h3>Currently under active development.</h3><p>Interfaces, supported features, and implementation details may change as the project evolves.</p></div><Link className="button-secondary" href="/roadmap">See the roadmap <span aria-hidden="true">→</span></Link></div></div></section>
+      <section className="blueprint-section" id="security">
+        <div className="container"><SectionHeading eyebrow="Security-oriented by design" title="Security belongs in the blueprint." description="The product direction treats permissions, boundaries, and diagnostics as first-class infrastructure concerns." /><div className="security-grid">{securityPrinciples.map(([title, description]) => <article className="security-card" key={title}><span className="security-card-mark" aria-hidden="true">+</span><h3>{title}</h3><p>{description}</p></article>)}</div></div>
+      </section>
 
-    <section className="section section-bordered"><div className="container"><SectionHeading eyebrow="Contact" title="Questions about Blue Lizard?" description="For technical inquiries, feedback, collaboration discussions, or general questions, contact the project directly." /><Link className="text-link" href="/contact">contact@bluelizard.sbs <span className="text-link-arrow" aria-hidden="true">↗</span></Link></div></section>
-    <CTA title="Build with a clearer model of your backend." description="Follow the project as the CLI, blueprint system, validation pipeline, and MCP interface take shape." actionLabel="Read the roadmap" actionHref="/roadmap" />
-  </>;
+      <section className="blueprint-section blueprint-section-blue" id="build">
+        <div className="container build-section-grid">
+          <div><Eyebrow>From blueprint to backend</Eyebrow><h2>Build and export the system you can explain.</h2><p className="section-copy">A visual model should not become another silo. Blue Lizard is intended to connect the blueprint to build workflows, validation, deployment targets, and the diagnostics developers need to ship with confidence.</p><div className="build-points"><span>Blueprint as source of intent</span><span>Validation as a build step</span><span>Exportable backend workflows</span></div></div>
+          <div className="export-panel" aria-label="Conceptual build export preview"><div className="export-panel-header"><span>blue-lizard build</span><span className="export-status">ready to inspect</span></div><div className="export-panel-body"><div><span className="export-line-number">01</span><span className="export-keyword">blueprint</span> <span>signup</span></div><div><span className="export-line-number">02</span><span className="export-keyword">target</span> <span>service / production</span></div><div><span className="export-line-number">03</span><span className="export-keyword">checks</span> <span>policy, schema, dependency</span></div><div><span className="export-line-number">04</span><span className="export-keyword">export</span> <span className="export-value">deployable backend</span></div></div><div className="export-panel-footer">Conceptual workflow · implementation in progress</div></div>
+        </div>
+      </section>
+
+      <section className="blueprint-section" id="pricing">
+        <div className="container"><SectionHeading eyebrow="Pricing" title="Start with the foundation." description="The MVP pricing model is intentionally simple while the product surface is being validated." /><div className="pricing-grid"><article className="pricing-card pricing-card-featured"><div className="pricing-card-label">Early access</div><h3>Join the waitlist</h3><p>Get launch updates and help shape the first version of visual backend infrastructure.</p><div className="pricing-card-footer"><span>Coming with the MVP</span><Link className="button-primary" href="/waitlist">Join the Waitlist</Link></div></article><article className="pricing-card"><div className="pricing-card-label">Teams</div><h3>Defined with users</h3><p>Team workflows, collaboration, and deployment surfaces will be shaped around early product feedback.</p><div className="pricing-card-footer"><span>Details to follow</span></div></article><article className="pricing-card"><div className="pricing-card-label">Open direction</div><h3>Transparent by default</h3><p>Follow the roadmap as capabilities move from concept to verified implementation.</p><div className="pricing-card-footer"><Link className="text-link" href="/roadmap">Read the roadmap <span className="text-link-arrow" aria-hidden="true">↗</span></Link></div></article></div></div>
+      </section>
+
+      <section className="waitlist-banner" id="waitlist-signup"><div className="container waitlist-banner-inner"><div><Eyebrow>Early access</Eyebrow><h2>Design the next backend with us.</h2><p>Blue Lizard MVP launching December 3, 2026. Join the waitlist for product updates and early access.</p></div><Link className="button-dark" href="/waitlist">Join the Waitlist</Link></div></section>
+
+      <section className="blueprint-section faq-section" id="faq"><div className="container faq-grid"><div><Eyebrow>FAQ</Eyebrow><h2>Clear about what is real, planned, and next.</h2><p className="section-copy">The preview is intentionally honest: it shows the product direction without presenting the conceptual graph as a shipped editor.</p></div><div className="faq-list">{faqs.map(([question, answer]) => <details key={question}><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div></div></section>
+
+      <CTA title="Give your backend a shape before it has a codebase." description="Join the early access list and follow Blue Lizard as visual blueprints become a new interface for backend infrastructure." actionLabel="Join the Waitlist" actionHref="/waitlist" />
+    </>
+  );
 }
