@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { PricingCard } from "./components/pricing-card";
 import { BuildOutputPreview } from "./components/build-output-preview";
@@ -6,6 +7,21 @@ import { CTA, Eyebrow, SectionHeading, StatusPill } from "./components/ui";
 import { SITE_DESCRIPTION, SITE_TITLE } from "./lib/metadata";
 
 export const metadata = { title: { absolute: SITE_TITLE }, description: SITE_DESCRIPTION };
+
+const founders = [
+  {
+    name: "Swaraj Puppalwar",
+    role: "Founder and CTO",
+    photo: "/founders/swaraj-puppalwar.png",
+    linkedin: "https://www.linkedin.com/in/swaraj-puppalwar/",
+  },
+  {
+    name: "Armaan Watts",
+    role: "Co-Founder and CEO",
+    photo: "/founders/armaan-watts.png",
+    linkedin: "https://www.linkedin.com/in/armaanwatts/",
+  },
+];
 
 const blueprintPrinciples = [
   ["01", "Every dependency is visible", "Requests, policies, queues, stores, and responses live in one inspectable graph."],
@@ -26,8 +42,8 @@ const securityPrinciples = [
 ] as const;
 
 const faqs = [
-  ["Is the blueprint editor available today?", "Not yet. This homepage shows a conceptual preview of the visual system Blue Lizard is building. The nodes, connections, and inspector are illustrative, not a functioning editor."],
-  ["Is Blue Lizard a replacement for my framework?", "Blue Lizard is intended to sit above existing backend technologies as a structured design, validation, and build layer. The supported runtime surface will become clearer as the project develops."],
+  ["Is the blueprint editor available today?", "Not yet. This homepage shows a conceptual preview of the visual system BlueLizard is building. The nodes, connections, and inspector are illustrative, not a functioning editor."],
+  ["Is BlueLizard a replacement for my framework?", "BlueLizard is intended to sit above existing backend technologies as a structured design, validation, and build layer. The supported runtime surface will become clearer as the project develops."],
   ["How will AI agents use a blueprint?", "The intended MCP integration gives compatible agents a structured representation of a backend so they can inspect relationships, propose changes, and return bounded diagnostics."],
   ["What is the MVP target?", "December 3, 2026 is the current MVP target, not a completed release date. Join the waitlist for updates as the product moves toward that target."],
 ] as const;
@@ -39,14 +55,14 @@ export default function Home() {
         <div className="container">
           <div className="blueprint-hero-grid">
             <div className="blueprint-hero-copy">
-              <Eyebrow>Blue Lizard / Visual backend infrastructure</Eyebrow>
+              <Eyebrow>BlueLizard / Visual backend infrastructure</Eyebrow>
               <h1>Stop generating code.<br /><span>Start designing backends.</span></h1>
-              <p className="blueprint-hero-description">Blue Lizard turns backend development into visual blueprints. Developers and AI coding agents can design, inspect, and build secure, deployable backend systems through structured nodes and connections.</p>
+              <p className="blueprint-hero-description">BlueLizard turns backend development into visual blueprints. Developers and AI coding agents can design, inspect, and build secure, deployable backend systems through structured nodes and connections.</p>
               <div className="blueprint-hero-status"><StatusPill tone="orange">MVP target: December 3, 2026</StatusPill></div>
               <div className="blueprint-hero-actions"><Link className="button-primary" href="/waitlist">Join the Waitlist</Link><a className="button-secondary" href="#blueprint">Explore the Blueprint</a></div>
               <p className="blueprint-hero-footnote"><span aria-hidden="true">⌁</span> Designed for developers, teams, and AI agents that need more context.</p>
             </div>
-            <div className="hero-side-note" aria-label="Product positioning"><div className="hero-side-rule" /><p>Backend infrastructure is already a graph. Blue Lizard makes the graph the interface.</p><span>01 / 05</span></div>
+            <div className="hero-side-note" aria-label="Product positioning"><div className="hero-side-rule" /><p>Backend infrastructure is already a graph. BlueLizard makes the graph the interface.</p><span>01 / 05</span></div>
           </div>
           <BlueprintPreview />
         </div>
@@ -74,12 +90,12 @@ export default function Home() {
       </section>
 
       <section className="blueprint-section" id="security">
-        <div className="container"><SectionHeading eyebrow="Security-oriented by design" title="Security isn't a prompt. It's architecture." description="A secure backend needs visible boundaries for validation, identity, authorization, data, and operational configuration. Blue Lizard intends to represent those decisions in the blueprint before code is generated." /><div className="security-grid">{securityPrinciples.map(([title, description]) => <article className="security-card" key={title}><span className="security-card-mark" aria-hidden="true">+</span><h3>{title}</h3><p>{description}</p></article>)}</div><div className="security-home-boundary"><strong>Authentication verifies identity.</strong><span>Authorization evaluates access relationships and policies. OpenFGA is not an authentication provider.</span><a href="/features">Explore the architecture <span aria-hidden="true">↗</span></a></div></div>
+        <div className="container"><SectionHeading eyebrow="Security-oriented by design" title="Security isn't a prompt. It's architecture." description="A secure backend needs visible boundaries for validation, identity, authorization, data, and operational configuration. BlueLizard intends to represent those decisions in the blueprint before code is generated." /><div className="security-grid">{securityPrinciples.map(([title, description]) => <article className="security-card" key={title}><span className="security-card-mark" aria-hidden="true">+</span><h3>{title}</h3><p>{description}</p></article>)}</div><div className="security-home-boundary"><strong>Authentication verifies identity.</strong><span>Authorization evaluates access relationships and policies. OpenFGA is not an authentication provider.</span><a href="/features">Explore the architecture <span aria-hidden="true">↗</span></a></div></div>
       </section>
 
       <section className="blueprint-section blueprint-section-blue" id="build">
         <div className="container build-section-grid">
-          <div><Eyebrow>From blueprint to backend</Eyebrow><h2>Build and export the system you can explain.</h2><p className="section-copy">A visual model should not become another silo. Blue Lizard is intended to connect the blueprint to build workflows, validation, deployment targets, and the diagnostics developers need to ship with confidence.</p><div className="build-points"><span>Blueprint as source of intent</span><span>Validation as a build step</span><span>Exportable backend workflows</span></div></div>
+          <div><Eyebrow>From blueprint to backend</Eyebrow><h2>Build and export the system you can explain.</h2><p className="section-copy">A visual model should not become another silo. BlueLizard is intended to connect the blueprint to build workflows, validation, deployment targets, and the diagnostics developers need to ship with confidence.</p><div className="build-points"><span>Blueprint as source of intent</span><span>Validation as a build step</span><span>Exportable backend workflows</span></div></div>
           <div className="export-panel" aria-label="Conceptual build export preview"><div className="export-panel-header"><span>blue-lizard build</span><span className="export-status">ready to inspect</span></div><div className="export-panel-body"><div><span className="export-line-number">01</span><span className="export-keyword">blueprint</span> <span>signup</span></div><div><span className="export-line-number">02</span><span className="export-keyword">target</span> <span>service / production</span></div><div><span className="export-line-number">03</span><span className="export-keyword">checks</span> <span>policy, schema, dependency</span></div><div><span className="export-line-number">04</span><span className="export-keyword">export</span> <span className="export-value">deployable backend</span></div></div><div className="export-panel-footer">Conceptual workflow · implementation in progress</div></div>
         </div>
       </section>
@@ -87,14 +103,37 @@ export default function Home() {
       <BuildOutputPreview />
 
       <section className="blueprint-section" id="pricing">
-        <div className="container home-pricing-layout"><div><SectionHeading eyebrow="Pricing preview" title="One straightforward plan for the MVP." description="A planned monthly Developer License with a clear focus: visual backend infrastructure that remains in the developer's hands." /><p className="home-pricing-note">MVP target: December 3, 2026 · Pricing is planned for the upcoming release and may evolve before public availability.</p><Link className="text-link" href="/pricing">View the pricing preview</Link></div><PricingCard compact /></div>
+        <div className="container home-pricing-layout"><div><SectionHeading eyebrow="Pricing" title="Discuss your Developer License." description="Share your project and deployment needs with the BlueLizard team." /><p className="home-pricing-note">MVP target: December 3, 2026</p><Link className="text-link" href="/pricing">Explore the Developer License</Link></div><PricingCard compact /></div>
       </section>
 
-      <section className="waitlist-banner" id="waitlist-signup"><div className="container waitlist-banner-inner"><div><Eyebrow>Early access</Eyebrow><h2>Design the next backend with us.</h2><p>Blue Lizard MVP target: December 3, 2026. Join the waitlist for product updates and early access.</p></div><Link className="button-dark" href="/waitlist">Join the Waitlist</Link></div></section>
+      <section className="waitlist-banner" id="waitlist-signup"><div className="container waitlist-banner-inner"><div><Eyebrow>Early access</Eyebrow><h2>Design the next backend with us.</h2><p>BlueLizard MVP target: December 3, 2026. Join the waitlist for product updates and early access.</p></div><Link className="button-dark" href="/waitlist">Join the Waitlist</Link></div></section>
 
       <section className="blueprint-section faq-section" id="faq"><div className="container faq-grid"><div><Eyebrow>FAQ</Eyebrow><h2>Clear about what is real, planned, and next.</h2><p className="section-copy">The preview is intentionally honest: it shows the product direction without presenting the conceptual graph as a shipped editor.</p></div><div className="faq-list">{faqs.map(([question, answer]) => <details key={question}><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div></div></section>
 
-      <CTA title="Give your backend a shape before it has a codebase." description="Join the early access list and follow Blue Lizard as visual blueprints become a new interface for backend infrastructure." actionLabel="Join the Waitlist" actionHref="/waitlist" />
+      <section className="blueprint-section founders-section" id="Founders" aria-labelledby="founders-heading">
+        <div className="container">
+          <div className="prose">
+            <h2 id="founders-heading">Founders</h2>
+            <div className="founder-grid">
+              {founders.map(({ name, role, photo, linkedin }) => (
+                <article className="founder-profile" key={name}>
+                  <Image src={photo} alt={name} width={128} height={128} />
+                  <div>
+                    <h3>{name}</h3>
+                    <p>{role}</p>
+                    <a className="text-link founder-link" href={linkedin} aria-label={`${name} on LinkedIn`}>
+                      LinkedIn <span className="text-link-arrow" aria-hidden="true">↗</span>
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+            <p>For collaboration or inquiries for the BlueLizard founding team, <a href="/contact">get in touch</a>.</p>
+          </div>
+        </div>
+      </section>
+
+      <CTA title="Give your backend a shape before it has a codebase." description="Join the early access list and follow BlueLizard as visual blueprints become a new interface for backend infrastructure." actionLabel="Join the Waitlist" actionHref="/waitlist" />
     </>
   );
 }

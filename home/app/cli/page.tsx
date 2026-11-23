@@ -3,17 +3,17 @@ import { CodeBlock } from "../components/code-block";
 import { CTA, PageIntro, SectionHeading } from "../components/ui";
 import { pageMetadata } from "../lib/metadata";
 
-export const metadata = pageMetadata({ title: "CLI", description: "Blue Lizard CLI overview, package identifier, executable, and clearly labeled evolving commands.", path: "/cli", image: "/og/cli.png", imageAlt: "Blue Lizard CLI: Build and serve through a consistent workflow." });
+export const metadata = pageMetadata({ title: "CLI", description: "BlueLizard CLI overview, package identifier, executable, and clearly labeled evolving commands.", path: "/cli", image: "/og/cli.png", imageAlt: "BlueLizard CLI: Build and serve through a consistent workflow." });
 
 export default function CLIPage() {
   return (
     <>
-      <PageIntro eyebrow="Command line" title="Blue Lizard CLI" description="A command-line interface for working with Blue Lizard projects. The package identifier is @bluelizard/cli and the intended executable is lizard." />
+      <PageIntro eyebrow="Command line" title="BlueLizard CLI" description="A command-line interface for working with BlueLizard projects. The package identifier is @bluelizard/cli and the intended executable is lizard." />
       <section className="section">
         <div className="container stack-lg">
           <div className="feature-grid">
             <article className="feature-card"><div className="feature-card-number">PACKAGE</div><h3>@bluelizard/cli</h3><p>The npm package name associated with the project. Published availability is not verified in this repository.</p><div className="feature-card-footer"><span className="badge badge-planned">Verify before use</span></div></article>
-            <article className="feature-card"><div className="feature-card-number">EXECUTABLE</div><h3>lizard</h3><p>The intended command-line executable for Blue Lizard workflows.</p><div className="feature-card-footer"><span className="badge badge-in-progress">Evolving</span></div></article>
+            <article className="feature-card"><div className="feature-card-number">EXECUTABLE</div><h3>lizard</h3><p>The intended command-line executable for BlueLizard workflows.</p><div className="feature-card-footer"><span className="badge badge-in-progress">Evolving</span></div></article>
           </div>
           <SectionHeading eyebrow="Workflow examples" title="Commands shown with their current level of certainty." />
           <CodeBlock label="Build and serve" code={`lizard build\nlizard serve`} note="Intended workflow examples. Current availability and behavior require verification against the CLI source or published package." />

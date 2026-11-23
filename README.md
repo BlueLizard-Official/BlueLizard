@@ -1,9 +1,9 @@
 
 <div align="center">
 
-<img src="./home/public/logo.png" alt="Blue Lizard" width="130" />
+<img src="./home/public/logo.png" alt="BlueLizard" width="130" />
 
-# BLUE LIZARD
+# BlueLizard
 
 ### Design visually. Build with code. Ship with confidence.
 
@@ -21,21 +21,21 @@
 
 ---
 
-## What is Blue Lizard?
+## What is BlueLizard?
 
-**Blue Lizard is an upcoming visual backend development framework that connects graphical programming with production-oriented TypeScript code generation.**
+**BlueLizard is an upcoming visual backend development framework that connects graphical programming with production-oriented TypeScript code generation.**
 
 Backend development is becoming faster with AI coding agents. But generating code is only one part of building reliable software.
 
 Developers still need to reason about architecture, authentication, authorization, data flow, validation, security, and deployment.
 
-Blue Lizard is being designed to make these systems easier to understand, construct, inspect, and maintain.
+BlueLizard is being designed to make these systems easier to understand, construct, inspect, and maintain.
 
 The vision is straightforward:
 
 > Build backends visually without losing the power, flexibility, and ownership of real code.
 
-Inspired by node-based programming environments such as Unreal Engine Blueprints, Blue Lizard aims to bring a visual programming workflow to backend engineering.
+Inspired by node-based programming environments such as Unreal Engine Blueprints, BlueLizard aims to bring a visual programming workflow to backend engineering.
 
 This project is currently in its early development and research stage.
 
@@ -58,11 +58,11 @@ Common challenges include:
 
 **Generating code is easy. Understanding and trusting the resulting system is harder.**
 
-Blue Lizard is an exploration of how visual programming, explicit architecture, and code generation can address these challenges.
+BlueLizard is an exploration of how visual programming, explicit architecture, and code generation can address these challenges.
 
 ## The Vision
 
-Blue Lizard is designed around three principles.
+BlueLizard is designed around three principles.
 
 ### 01. Visual by Design
 
@@ -88,7 +88,7 @@ The developer remains responsible for reviewing and validating the system.
 
 ---
 
-## How Blue Lizard Is Intended to Work
+## How BlueLizard Is Intended to Work
 
 ```text
           DEVELOPER / AI AGENT
@@ -110,7 +110,7 @@ The developer remains responsible for reviewing and validating the system.
                    |
                    v
         +---------------------+
-        |  BLUE LIZARD ENGINE |
+        |  BlueLizard ENGINE |
         |                     |
         |  Validation         |
         |  Graph Analysis     |
@@ -168,7 +168,7 @@ The proposed commands are:
 ### Example Workflow
 
 ```text
-Create a Blue Lizard project
+Create a BlueLizard project
            |
            v
 Define APIs and services
@@ -191,7 +191,7 @@ Deploy to infrastructure
 
 ## Proposed Technology Stack
 
-Blue Lizard is exploring the following technologies:
+BlueLizard is exploring the following technologies:
 
 | Layer | Technology |
 | :--- | :--- |
@@ -213,9 +213,9 @@ The final architecture may evolve through prototyping, benchmarks, and developer
 
 **Early Development / Architecture Research**
 
-Blue Lizard is not currently a production-ready backend framework.
+BlueLizard is not currently a production-ready backend framework.
 
-The repository currently includes the Blue Lizard website. The blueprint compiler, runtime tooling, and visual backend editor remain planned development work.
+The repository currently includes the BlueLizard website. The blueprint compiler, runtime tooling, and visual backend editor remain planned development work.
 
 There is currently no public stable framework release.
 
@@ -287,11 +287,11 @@ npm run build
 npm run start
 ```
 
-These commands run the website, not the planned Blue Lizard backend framework.
+These commands run the website, not the planned BlueLizard backend framework.
 
 ---
 
-## Help Shape Blue Lizard
+## Help Shape BlueLizard
 
 We are actively exploring how developers work with AI-generated backend code.
 
@@ -321,7 +321,7 @@ Your feedback can help shape the architecture before the framework reaches its f
 
 ## Contributing
 
-Blue Lizard is currently in its initial development phase.
+BlueLizard is currently in its initial development phase.
 
 Architectural feedback, technical discussions, bug reports, documentation improvements, and developer experience suggestions are welcome.
 
@@ -331,7 +331,7 @@ As the framework matures, we plan to provide dedicated contributor documentation
 
 ## Security
 
-Security is a central design consideration for Blue Lizard.
+Security is a central design consideration for BlueLizard.
 
 However, generated code must not be considered secure solely because it was produced by a framework or AI agent.
 
@@ -353,7 +353,7 @@ The licensing approach for the website and future framework components will be d
 
 ## Contact
 
-**Blue Lizard**
+**BlueLizard**
 
 Website: https://bluelizard.sbs
 
@@ -369,7 +369,7 @@ For technical discussions, potential collaborations, and early developer feedbac
 
 ### Build systems you can understand.
 
-**BLUE LIZARD**
+**BlueLizard**
 
 Visual backend engineering for the next generation of developers.
 

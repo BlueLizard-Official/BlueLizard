@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { after, NextResponse } from "next/server";
 import {
   DRIVER_ERROR_CODES,
   DuplicateKeyError,
@@ -10,6 +10,7 @@ import {
   findByEmail,
   WaitlistDuplicateError,
 } from "../../lib/waitlist-repository";
+import { notifyWaitlistTeam } from "../../lib/waitlist-notification";
 import { validateWaitlistSubmission } from "../../lib/waitlist-schema";
 
 const MAX_BODY_BYTES = 16 * 1024;
@@ -207,10 +208,11 @@ export async function POST(request: Request) {
       );
     }
 
-    await createEntry(validation.data);
+    const entry = await createEntry(validation.data);
+    after(() => notifyWaitlistTeam(entry));
     return jsonResponse({
       ok: true,
-      message: "You're on the list. We'll contact you with Blue Lizard MVP updates.",
+      message: "You're on the list. We'll contact you with BlueLizard MVP updates.",
     }, 201);
   } catch (error) {
     if (isDuplicateError(error)) {

@@ -3,7 +3,7 @@ import { InfrastructureDiagram } from "../components/infrastructure-diagram";
 import { SecurityFeature } from "../components/security-feature";
 import { pageMetadata } from "../lib/metadata";
 
-export const metadata = pageMetadata({ title: "Security and infrastructure", description: "Explore Blue Lizard's intended security-conscious backend architecture and configurable infrastructure modules.", path: "/features", image: "/og/features.png", imageAlt: "Blue Lizard security-conscious backend architecture." });
+export const metadata = pageMetadata({ title: "Security and infrastructure", description: "Explore BlueLizard's intended security-conscious backend architecture and configurable infrastructure modules.", path: "/features", image: "/og/features.png", imageAlt: "BlueLizard security-conscious backend architecture." });
 
 const securityFeatures = [
   ["01", "Schema-based validation", "Represent request and configuration contracts explicitly, before untrusted input reaches application logic.", "Planned", "Planned blueprint capability; no general-purpose validation engine is claimed as available."],
@@ -21,7 +21,7 @@ const items = [
   ["Typed nodes and connections", "Make important backend relationships explicit, so tools can reason about valid connections and the operations that pass between them.", "Planned", "The concept is defined at the product level; a verified public implementation is not available in this repository."],
   ["Intermediate representation and validation", "Create a validation boundary between a project description and later build steps, with room for structural and configuration checks.", "Planned", "Validation is a planned capability; no implementation claim is made here."],
   ["Backend build orchestration", "Coordinate the processing required to turn a structured backend project into a buildable application target.", "In progress", "The CLI-oriented build workflow is part of the evolving direction; supported targets are not yet documented as stable."],
-  ["CLI workflows", "Give developers a direct command-line surface for working with Blue Lizard projects.", "In progress", "The package name and executable are defined for the project, but publication and current command behavior require verification."],
+  ["CLI workflows", "Give developers a direct command-line surface for working with BlueLizard projects.", "In progress", "The package name and executable are defined for the project, but publication and current command behavior require verification."],
   ["MCP integration", "Offer structured tools to compatible AI coding agents through a Model Context Protocol interface.", "Planned", "The integration is described as intended; no installation command is presented without verified implementation."],
   ["Security-oriented checks", "Help surface unsafe patterns, configuration issues, and authorization concerns earlier in the development workflow.", "Planned", "Security analysis is a planned direction, not a security guarantee or a completed scanner."],
   ["Runtime and serving workflows", "Provide a consistent way to start supported backend applications after the project has been processed.", "Planned", "Serving is part of the intended workflow; supported runtimes are not yet verified here."],
@@ -32,7 +32,7 @@ const items = [
 export default function FeaturesPage() {
   return (
     <>
-      <PageIntro eyebrow="Security and infrastructure" title="Backends should show their boundaries." description="Blue Lizard is being shaped as a security-conscious backend generation framework: a way to represent validation, identity, authorization, data, and operations as coherent infrastructure instead of leaving them implicit in generated source code." />
+      <PageIntro eyebrow="Security and infrastructure" title="Backends should show their boundaries." description="BlueLizard is being shaped as a security-conscious backend generation framework: a way to represent validation, identity, authorization, data, and operations as coherent infrastructure instead of leaving them implicit in generated source code." />
 
       <section className="section security-architecture-section">
         <div className="container">
@@ -51,7 +51,7 @@ export default function FeaturesPage() {
 
       <section className="section infrastructure-output-section">
         <div className="container infrastructure-output-grid">
-          <div><SectionHeading eyebrow="Reproducible infrastructure" title="Generate the shape, then adapt the deployment." description="Blue Lizard aims to produce reproducible infrastructure configurations: Docker Compose configuration, service definitions, and environment templates that can be reviewed, versioned, and adjusted for the target environment." /></div>
+          <div><SectionHeading eyebrow="Reproducible infrastructure" title="Generate the shape, then adapt the deployment." description="BlueLizard aims to produce reproducible infrastructure configurations: Docker Compose configuration, service definitions, and environment templates that can be reviewed, versioned, and adjusted for the target environment." /></div>
           <div className="infrastructure-output-panel"><div><span>blueprint output</span><span className="output-panel-status">planned</span></div><ul><li>docker-compose.yml</li><li>service definitions</li><li>.env.example template</li><li>health checks + dependencies</li></ul><p>Modules remain configurable according to application needs. The generator should make choices visible, not force one deployment model.</p></div>
         </div>
       </section>
@@ -60,7 +60,7 @@ export default function FeaturesPage() {
         <div className="container">
           <SectionHeading eyebrow="Technical feature map" title="Intended capabilities, described precisely." description="The status beside each capability is conservative. Planned architecture is not the same as a verified production feature." />
           <div className="technical-list">{items.map(([title, purpose, status, implementation]) => <article className="technical-item" key={title}><h3>{title}</h3><p>{purpose}</p><div className="technical-meta"><span className={`badge ${status === "In progress" ? "badge-in-progress" : "badge-planned"}`}>{status}</span><span>{implementation}</span></div></article>)}</div>
-          <p className="liorandb-boundary-note"><strong>Database boundary:</strong> LioranDB is not described as a drop-in PostgreSQL replacement. The MongoDB-oriented LioranDB driver is not used as a PostgreSQL transport; Blue Lizard should keep those database choices explicit.</p>
+          <p className="liorandb-boundary-note"><strong>Database boundary:</strong> LioranDB is not described as a drop-in PostgreSQL replacement. The MongoDB-oriented LioranDB driver is not used as a PostgreSQL transport; BlueLizard should keep those database choices explicit.</p>
         </div>
       </section>
 

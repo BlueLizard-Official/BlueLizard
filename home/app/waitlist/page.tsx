@@ -3,17 +3,17 @@ import { WaitlistForm } from "../components/waitlist-form";
 import { pageMetadata } from "../lib/metadata";
 
 export const metadata = pageMetadata({
-  title: "Join the Blue Lizard waitlist.",
-  description: "Join the Blue Lizard early developer waitlist for MVP updates and early access to visual backend infrastructure.",
+  title: "Join the BlueLizard waitlist.",
+  description: "Join the BlueLizard early developer waitlist for MVP updates and early access to visual backend infrastructure.",
   path: "/waitlist",
   image: "/og/home.png",
-  imageAlt: "Join the Blue Lizard developer waitlist",
+  imageAlt: "Join the BlueLizard developer waitlist",
 });
 
 export default function WaitlistPage() {
   return (
     <>
-      <PageIntro eyebrow="Early developer access" title="Put your backend on the map." description="Join the Blue Lizard waitlist for MVP updates and early access to a new way to design, inspect, and build backend systems." />
+      <PageIntro eyebrow="Early developer access" title="Put your backend on the map." description="Join the BlueLizard waitlist for MVP updates and early access to a new way to design, inspect, and build backend systems." />
       <section className="waitlist-page">
         <div className="container waitlist-layout">
           <aside className="waitlist-aside">
