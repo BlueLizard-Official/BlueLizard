@@ -78,7 +78,7 @@ export default function Home() {
       </section>
 
       <section className="blueprint-section" id="security">
-        <div className="container"><SectionHeading eyebrow="Security-oriented by design" title="Security belongs in the blueprint." description="The product direction treats permissions, boundaries, and diagnostics as first-class infrastructure concerns." /><div className="security-grid">{securityPrinciples.map(([title, description]) => <article className="security-card" key={title}><span className="security-card-mark" aria-hidden="true">+</span><h3>{title}</h3><p>{description}</p></article>)}</div></div>
+        <div className="container"><SectionHeading eyebrow="Security-oriented by design" title="Security isn't a prompt. It's architecture." description="A secure backend needs visible boundaries for validation, identity, authorization, data, and operational configuration. Blue Lizard intends to represent those decisions in the blueprint before code is generated." /><div className="security-grid">{securityPrinciples.map(([title, description]) => <article className="security-card" key={title}><span className="security-card-mark" aria-hidden="true">+</span><h3>{title}</h3><p>{description}</p></article>)}</div><div className="security-home-boundary"><strong>Authentication verifies identity.</strong><span>Authorization evaluates access relationships and policies. OpenFGA is not an authentication provider.</span><a href="/features">Explore the architecture <span aria-hidden="true">↗</span></a></div></div>
       </section>
 
       <section className="blueprint-section blueprint-section-blue" id="build">
