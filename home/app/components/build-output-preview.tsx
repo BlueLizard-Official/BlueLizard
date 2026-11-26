@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type KeyboardEvent } from "react";
+import { useEffect, useState, type KeyboardEvent } from "react";
 import { CodeBlock, type CodeLanguage } from "./code-block";
 
 const projectStructure = `build/
@@ -153,9 +153,35 @@ const pipeline = [
 export function BuildOutputPreview() {
   const [activeId, setActiveId] = useState<(typeof tabs)[number]["id"]>("structure");
   const [activeStage, setActiveStage] = useState<number | null>(null);
+  const [playing, setPlaying] = useState(false);
   const activeTab = tabs.find((tab) => tab.id === activeId) ?? tabs[0];
 
+  useEffect(() => {
+    if (!playing || activeStage === null || activeStage >= pipeline.length - 1) return;
+    const next = activeStage + 1;
+    const timer = window.setTimeout(() => {
+      setActiveStage(next);
+      setActiveId(pipeline[next].tab);
+      if (next === pipeline.length - 1) setPlaying(false);
+    }, 1250);
+    return () => window.clearTimeout(timer);
+  }, [activeStage, playing]);
+
+  function togglePipeline() {
+    if (playing) {
+      setPlaying(false);
+      return;
+    }
+    const next = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? pipeline.length - 1
+      : activeStage !== null && activeStage < pipeline.length - 1 ? activeStage : 0;
+    setActiveStage(next);
+    setActiveId(pipeline[next].tab);
+    setPlaying(next < pipeline.length - 1);
+  }
+
   function selectTab(id: (typeof tabs)[number]["id"]) {
+    setPlaying(false);
     setActiveStage(null);
     setActiveId(id);
   }
@@ -186,13 +212,27 @@ export function BuildOutputPreview() {
           <p className="build-output-description">BlueLizard aims to turn an inspectable blueprint into artifacts developers can own, review, adapt, and deploy to their own VPS. These previews are examples until actual compiler output is available.</p>
         </div>
 
-        <div className="build-output-pipeline" aria-label="Conceptual backend compilation pipeline">
-          {pipeline.map((step, index) => (
-            <button type="button" className="build-output-pipeline-step" key={step.title} aria-pressed={activeStage === index} onClick={() => {
-              setActiveStage(index);
-              setActiveId(step.tab);
-            }}><span>{step.title}</span>{index < pipeline.length - 1 ? <i aria-hidden="true">↓</i> : null}</button>
-          ))}
+        <div className="build-timeline">
+          <div className="build-timeline-toolbar">
+            <strong>Build pipeline</strong>
+            <button className="button-secondary" type="button" onClick={togglePipeline}>
+              {playing ? "Pause pipeline" : activeStage === pipeline.length - 1 ? "Replay pipeline" : activeStage === null ? "Play pipeline" : "Continue pipeline"}
+            </button>
+          </div>
+          <ol className="product-timeline product-timeline-build" aria-label="Example build pipeline">
+            {pipeline.map((step, index) => (
+              <li key={step.title} data-complete={activeStage !== null && index < activeStage}>
+                <button type="button" aria-pressed={activeStage === index} data-traced={activeStage !== null && index <= activeStage} onClick={() => {
+                  setPlaying(false);
+                  setActiveStage(index);
+                  setActiveId(step.tab);
+                }}>
+                  <span className="timeline-marker" aria-hidden="true">{index + 1}</span>
+                  <strong>{step.title}</strong>
+                </button>
+              </li>
+            ))}
+          </ol>
         </div>
 
         <p className="build-stage-note" aria-live="polite">{activeStage === null ? "Select a build stage to inspect its example artifact." : pipeline[activeStage].detail}</p>

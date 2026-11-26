@@ -125,13 +125,13 @@ export function BlueprintPreview() {
         </div>
         <div className="blueprint-explorer-body">
           <div className="blueprint-explorer-canvas">
-            <ol className="blueprint-explorer-steps" aria-label="Signup request steps">
+            <ol className="product-timeline product-timeline-signup" aria-label="Signup request steps">
               {signupSteps.map((id, index) => (
-                <li key={id}>
+                <li key={id} data-complete={index < traceStep}>
                   <button type="button" aria-pressed={id === activeId} data-traced={index <= traceStep} onClick={() => selectNode(id)}>
-                    <span className="blueprint-explorer-step-label"><span>{String(index + 1).padStart(2, "0")}</span>{nodeContent[id].category}</span>
+                    <span className="timeline-marker" aria-hidden="true">{index + 1}</span>
                     <strong>{nodeContent[id].title}</strong>
-                    <span className="blueprint-explorer-description">{nodeContent[id].description}</span>
+
                   </button>
                 </li>
               ))}
