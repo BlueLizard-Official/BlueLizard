@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { SignupBlueprintGraph, signupSteps } from "./signup-blueprint-graph";
+import { signupSteps } from "./signup-blueprint-graph";
 
 const nodeContent = {
   request: {
@@ -109,22 +109,56 @@ export function BlueprintPreview() {
   }
 
   return (
-    <section className="blueprint-preview" id="blueprint" data-scroll-reveal aria-labelledby="blueprint-preview-title">
-      <div className="blueprint-preview-header">
-        <div><p className="blueprint-kicker">Conceptual preview</p><h2 id="blueprint-preview-title">A backend you can inspect at a glance.</h2></div>
-        <div className="blueprint-preview-tools"><button className="button-secondary" type="button" onClick={runTrace} disabled={traceStep >= 0 && traceStep < lastStep}>{traceStep === lastStep ? "Replay request" : "Run request on graph"}</button><p className="blueprint-preview-note">Select any node to inspect it.</p></div>
+    <section className="blueprint-explorer" id="blueprint" data-scroll-reveal aria-labelledby="blueprint-preview-title">
+      <div className="blueprint-explorer-heading">
+        <p className="blueprint-kicker">Interactive blueprint</p>
+        <h2 id="blueprint-preview-title">Explore the signup flow.</h2>
+        <p>Follow a sample request or select any step to see what it does.</p>
       </div>
-      <div className="blueprint-workspace">
-        <div className="blueprint-workspace-bar"><span className="workspace-title"><span className="workspace-status-dot" aria-hidden="true" /> signup.blueprint</span><span className="workspace-meta">8 nodes · 7 connections · draft</span></div>
-        <div className="blueprint-grid-surface">
-          <SignupBlueprintGraph content={nodeContent} selectedId={activeId} onSelect={selectNode} traceStep={traceStep} />
+
+      <div className="blueprint-explorer-shell">
+        <div className="blueprint-explorer-toolbar">
+          <span className="workspace-title"><span className="workspace-status-dot" aria-hidden="true" /> signup.blueprint</span>
+          <button className="button-primary" type="button" onClick={runTrace} disabled={traceStep >= 0 && traceStep < lastStep}>
+            {traceStep === lastStep ? "Replay request" : traceStep < 0 ? "Run sample request" : "Tracing request…"}
+          </button>
         </div>
-        <div className="blueprint-workspace-footer"><span><i className="legend-line legend-line-blue" aria-hidden="true" /> primary flow</span><span><i className="legend-line legend-line-orange" aria-hidden="true" /> infrastructure dependency</span><span className="workspace-footer-note">Illustrative graph, not the live editor</span></div>
+        <div className="blueprint-explorer-body">
+          <div className="blueprint-explorer-canvas">
+            <ol className="blueprint-explorer-steps" aria-label="Signup request steps">
+              {signupSteps.map((id, index) => (
+                <li key={id}>
+                  <button type="button" aria-pressed={id === activeId} data-traced={index <= traceStep} onClick={() => selectNode(id)}>
+                    <span className="blueprint-explorer-step-label"><span>{String(index + 1).padStart(2, "0")}</span>{nodeContent[id].category}</span>
+                    <strong>{nodeContent[id].title}</strong>
+                    <span className="blueprint-explorer-description">{nodeContent[id].description}</span>
+                  </button>
+                </li>
+              ))}
+            </ol>
+            <button type="button" className="blueprint-explorer-storage" aria-pressed={activeId === "postgres"} onClick={() => selectNode("postgres")}>
+              <span className="blueprint-explorer-step-label">Database dependency</span>
+              <strong>PostgreSQL</strong>
+            </button>
+          </div>
+          <aside className="blueprint-explorer-inspector" aria-label="Selected blueprint node details">
+            <p className="blueprint-kicker">{selectedNode.category}</p>
+            <div key={activeId} className="motion-swap">
+              <h3>{selectedNode.title}</h3>
+              <p>{selectedNode.purpose}</p>
+              <dl>
+                <div><dt>Configuration</dt><dd>{selectedNode.configuration}</dd></div>
+                <div><dt>Inputs</dt><dd>{selectedNode.inputs.map(({ label }) => label).join(" · ")}</dd></div>
+                <div><dt>Outputs</dt><dd>{selectedNode.outputs.map(({ label }) => label).join(" · ")}</dd></div>
+              </dl>
+            </div>
+          </aside>
+        </div>
+        <div className="blueprint-explorer-footer">
+          <span>Illustrative backend</span>
+          <span role="status">{traceStep === lastStep ? "201 Created · Sample request complete" : traceStep >= 0 ? `Tracing step ${traceStep + 1} of ${signupSteps.length}` : ""}</span>
+        </div>
       </div>
-      <aside className="blueprint-inspector" aria-live="polite" aria-label="Selected blueprint node details">
-        <div className="inspector-heading"><span className="blueprint-kicker">Selected node</span><span className="inspector-node-count">{selectedNode.category}</span></div>
-        <div key={activeId} className="inspector-content motion-swap"><h3>{selectedNode.title}</h3><p>{selectedNode.purpose}</p><dl><div><dt>Configuration</dt><dd>{selectedNode.configuration}</dd></div><div><dt>Inputs</dt><dd>{selectedNode.inputs.map((socket) => socket.label).join(" · ")}</dd></div><div><dt>Outputs</dt><dd>{selectedNode.outputs.map((socket) => socket.label).join(" · ")}</dd></div></dl></div>
-      </aside>
     </section>
   );
 }
