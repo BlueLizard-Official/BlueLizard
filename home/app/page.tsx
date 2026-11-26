@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PricingCard } from "./components/pricing-card";
 import { BuildOutputPreview } from "./components/build-output-preview";
 import { BlueprintPreview } from "./components/blueprint-preview";
+import { SignupTrace } from "./components/signup-trace";
 import { CTA, Eyebrow, SectionHeading, StatusPill } from "./components/ui";
 import { SITE_DESCRIPTION, SITE_TITLE } from "./lib/metadata";
 
@@ -56,13 +57,12 @@ export default function Home() {
           <div className="blueprint-hero-grid">
             <div className="blueprint-hero-copy">
               <Eyebrow>BlueLizard / Visual backend infrastructure</Eyebrow>
-              <h1>Stop generating code.<br /><span>Start designing backends.</span></h1>
-              <p className="blueprint-hero-description">BlueLizard turns backend development into visual blueprints. Developers and AI coding agents can design, inspect, and build secure, deployable backend systems through structured nodes and connections.</p>
-              <div className="blueprint-hero-status"><StatusPill tone="orange">MVP target: December 3, 2026</StatusPill></div>
+              <h1>See how your backend works <span>before you build it.</span></h1>
+              <p className="blueprint-hero-description">Design your backend as a visual blueprint. Follow a request from the API endpoint to the database and see where validation, permissions, and infrastructure fit.</p>
               <div className="blueprint-hero-actions"><Link className="button-primary" href="/waitlist">Join the Waitlist</Link><a className="button-secondary" href="#blueprint">Explore the Blueprint</a></div>
-              <p className="blueprint-hero-footnote"><span aria-hidden="true">⌁</span> Designed for developers, teams, and AI agents that need more context.</p>
+              <div className="blueprint-hero-status"><StatusPill tone="orange">MVP target: December 3, 2026</StatusPill></div>
             </div>
-            <div className="hero-side-note" aria-label="Product positioning"><div className="hero-side-rule" /><p>Backend infrastructure is already a graph. BlueLizard makes the graph the interface.</p><span>01 / 05</span></div>
+            <SignupTrace />
           </div>
           <BlueprintPreview />
         </div>
