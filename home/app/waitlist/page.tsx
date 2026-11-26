@@ -17,7 +17,7 @@ export default function WaitlistPage() {
       <section className="waitlist-page">
         <div className="container waitlist-layout">
           <aside className="waitlist-aside">
-            <StatusPill tone="orange">MVP target: December 3, 2026</StatusPill>
+            <StatusPill tone="orange">MVP launching soon</StatusPill>
             <h2>Built for the people who already think in systems.</h2>
             <p>Tell us what you build, what your stack looks like, and where a visual backend blueprint would save you time.</p>
             <div className="waitlist-aside-list"><span>Private early-access updates</span><span>Developer-focused product feedback</span><span>No public list or directory</span></div>

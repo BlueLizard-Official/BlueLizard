@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org) project for BlueLizard.
 
 ## Pre-launch website
 
-BlueLizard is presented as a pre-launch product with an MVP target of December 3, 2026. The homepage, `/features`, `/mcp`, `/pricing`, `/cli`, and `/roadmap` describe the intended blueprint, security, MCP, pricing, build-output, and developer workflows. Planned capabilities are labeled as planned or in progress; the site does not claim a public compiler, MCP server, payment checkout, or completed security audit.
+BlueLizard is presented as a pre-launch product with the MVP launching soon. The homepage, `/features`, `/mcp`, `/pricing`, `/cli`, and `/roadmap` describe the intended blueprint, security, MCP, pricing, build-output, and developer workflows. Planned capabilities are labeled as planned or in progress; the site does not claim a public compiler, MCP server, payment checkout, or completed security audit.
 
 The public waitlist is available at `/waitlist`. It accepts registrations through `/api/waitlist`, but it does not expose waitlist records or database credentials to the browser. Production deployments also need a trusted edge rate limiter; an in-memory limiter is not treated as reliable across serverless instances.
 

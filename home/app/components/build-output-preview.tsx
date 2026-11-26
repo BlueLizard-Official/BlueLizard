@@ -142,13 +142,21 @@ const tabs = [
   { id: "api", label: "Generated API", language: "typescript" as CodeLanguage, code: generatedApi, note: "Conceptual NestJS output showing schema validation and a separate authorization boundary; actual compiler output is not available yet." },
 ] as const;
 
-const pipeline = ["Visual Blueprint", "Graph Validation", "NestJS Code Generation", "Docker Configuration", "Deploy to Your VPS"] as const;
+const pipeline = [
+  { title: "Visual Blueprint", tab: "structure", detail: "See where the blueprint’s application and data boundaries would map into the project." },
+  { title: "Graph Validation", tab: "api", detail: "Inspect an example route with input validation and an authorization check." },
+  { title: "NestJS Code Generation", tab: "api", detail: "Review the example NestJS signup route." },
+  { title: "Docker Configuration", tab: "compose", detail: "Inspect the example service definitions and health checks." },
+  { title: "Deploy to Your VPS", tab: "environment", detail: "Review the environment settings you would configure before deployment." },
+] as const;
 
 export function BuildOutputPreview() {
   const [activeId, setActiveId] = useState<(typeof tabs)[number]["id"]>("structure");
+  const [activeStage, setActiveStage] = useState<number | null>(null);
   const activeTab = tabs.find((tab) => tab.id === activeId) ?? tabs[0];
 
   function selectTab(id: (typeof tabs)[number]["id"]) {
+    setActiveStage(null);
     setActiveId(id);
   }
 
@@ -179,15 +187,22 @@ export function BuildOutputPreview() {
         </div>
 
         <div className="build-output-pipeline" aria-label="Conceptual backend compilation pipeline">
-          {pipeline.map((step, index) => <div className="build-output-pipeline-step" key={step}><span>{step}</span>{index < pipeline.length - 1 ? <i aria-hidden="true">↓</i> : null}</div>)}
+          {pipeline.map((step, index) => (
+            <button type="button" className="build-output-pipeline-step" key={step.title} aria-pressed={activeStage === index} onClick={() => {
+              setActiveStage(index);
+              setActiveId(step.tab);
+            }}><span>{step.title}</span>{index < pipeline.length - 1 ? <i aria-hidden="true">↓</i> : null}</button>
+          ))}
         </div>
+
+        <p className="build-stage-note" aria-live="polite">{activeStage === null ? "Select a build stage to inspect its example artifact." : pipeline[activeStage].detail}</p>
 
         <div className="build-output-workspace">
           <div className="build-output-workspace-bar"><span>build/preview</span><span>example artifacts · not compiler output</span></div>
           <div className="build-output-tabs" role="tablist" aria-label="Example build output artifacts">
             {tabs.map((tab) => <button id={`build-output-tab-${tab.id}`} aria-controls={`build-output-panel-${tab.id}`} aria-selected={activeId === tab.id} className={activeId === tab.id ? "is-active" : ""} key={tab.id} role="tab" tabIndex={activeId === tab.id ? 0 : -1} type="button" onClick={() => selectTab(tab.id)} onKeyDown={handleTabKeyDown}>{tab.label}</button>)}
           </div>
-          <div className="build-output-panel" id={`build-output-panel-${activeTab.id}`} role="tabpanel" aria-labelledby={`build-output-tab-${activeTab.id}`}>
+          <div key={activeTab.id} className="build-output-panel motion-swap" id={`build-output-panel-${activeTab.id}`} role="tabpanel" aria-labelledby={`build-output-tab-${activeTab.id}`}>
             <CodeBlock code={activeTab.code} label={activeTab.label} language={activeTab.language} note={activeTab.note} />
           </div>
         </div>

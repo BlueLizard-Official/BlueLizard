@@ -6,6 +6,7 @@ export type BlueprintPoint = {
 type BlueprintConnectionProps = {
   readonly from: BlueprintPoint;
   readonly to: BlueprintPoint;
+  readonly active?: boolean;
   readonly tone?: "blue" | "orange" | "neutral";
 };
 
@@ -21,9 +22,9 @@ function connectionPath(from: BlueprintPoint, to: BlueprintPoint): string {
   return `M ${from.x} ${from.y} C ${from.x} ${from.y + distance}, ${to.x} ${to.y - distance}, ${to.x} ${to.y}`;
 }
 
-export function BlueprintConnection({ from, to, tone = "neutral" }: BlueprintConnectionProps) {
+export function BlueprintConnection({ from, to, tone = "neutral", active = false }: BlueprintConnectionProps) {
   return (
-    <g className={`blueprint-connection blueprint-connection-${tone}`} aria-hidden="true">
+    <g className={`blueprint-connection blueprint-connection-${tone}`} data-active={active} aria-hidden="true">
       <path d={connectionPath(from, to)} vectorEffect="non-scaling-stroke" />
       <circle cx={from.x} cy={from.y} r="0.40" vectorEffect="non-scaling-stroke" />
       <circle cx={to.x} cy={to.y} r="0.40" vectorEffect="non-scaling-stroke" />

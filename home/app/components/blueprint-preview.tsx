@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { SignupBlueprintGraph } from "./signup-blueprint-graph";
+import { useEffect, useState } from "react";
+import { SignupBlueprintGraph, signupSteps } from "./signup-blueprint-graph";
 
 const nodeContent = {
   request: {
@@ -88,24 +88,42 @@ const nodeContent = {
 
 export function BlueprintPreview() {
   const [selectedId, setSelectedId] = useState("request");
-  const selectedNode = nodeContent[selectedId as keyof typeof nodeContent];
+  const [traceStep, setTraceStep] = useState(-1);
+  const lastStep = signupSteps.length - 1;
+  const activeId = traceStep < 0 ? selectedId : signupSteps[traceStep];
+  const selectedNode = nodeContent[activeId as keyof typeof nodeContent];
+
+  useEffect(() => {
+    if (traceStep < 0 || traceStep >= lastStep) return;
+    const timer = window.setTimeout(() => setTraceStep(traceStep + 1), 520);
+    return () => window.clearTimeout(timer);
+  }, [traceStep, lastStep]);
+
+  function runTrace() {
+    setTraceStep(window.matchMedia("(prefers-reduced-motion: reduce)").matches ? lastStep : 0);
+  }
+
+  function selectNode(id: string) {
+    setTraceStep(-1);
+    setSelectedId(id);
+  }
 
   return (
     <section className="blueprint-preview" id="blueprint" data-scroll-reveal aria-labelledby="blueprint-preview-title">
       <div className="blueprint-preview-header">
         <div><p className="blueprint-kicker">Conceptual preview</p><h2 id="blueprint-preview-title">A backend you can inspect at a glance.</h2></div>
-        <p className="blueprint-preview-note">Click a node to inspect its purpose and configuration.</p>
+        <div className="blueprint-preview-tools"><button className="button-secondary" type="button" onClick={runTrace} disabled={traceStep >= 0 && traceStep < lastStep}>{traceStep === lastStep ? "Replay request" : "Run request on graph"}</button><p className="blueprint-preview-note">Select any node to inspect it.</p></div>
       </div>
       <div className="blueprint-workspace">
         <div className="blueprint-workspace-bar"><span className="workspace-title"><span className="workspace-status-dot" aria-hidden="true" /> signup.blueprint</span><span className="workspace-meta">8 nodes · 7 connections · draft</span></div>
         <div className="blueprint-grid-surface">
-          <SignupBlueprintGraph content={nodeContent} selectedId={selectedId} onSelect={setSelectedId} />
+          <SignupBlueprintGraph content={nodeContent} selectedId={activeId} onSelect={selectNode} traceStep={traceStep} />
         </div>
         <div className="blueprint-workspace-footer"><span><i className="legend-line legend-line-blue" aria-hidden="true" /> primary flow</span><span><i className="legend-line legend-line-orange" aria-hidden="true" /> infrastructure dependency</span><span className="workspace-footer-note">Illustrative graph, not the live editor</span></div>
       </div>
       <aside className="blueprint-inspector" aria-live="polite" aria-label="Selected blueprint node details">
         <div className="inspector-heading"><span className="blueprint-kicker">Selected node</span><span className="inspector-node-count">{selectedNode.category}</span></div>
-        <div className="inspector-content"><h3>{selectedNode.title}</h3><p>{selectedNode.purpose}</p><dl><div><dt>Configuration</dt><dd>{selectedNode.configuration}</dd></div><div><dt>Inputs</dt><dd>{selectedNode.inputs.map((socket) => socket.label).join(" · ")}</dd></div><div><dt>Outputs</dt><dd>{selectedNode.outputs.map((socket) => socket.label).join(" · ")}</dd></div></dl></div>
+        <div key={activeId} className="inspector-content motion-swap"><h3>{selectedNode.title}</h3><p>{selectedNode.purpose}</p><dl><div><dt>Configuration</dt><dd>{selectedNode.configuration}</dd></div><div><dt>Inputs</dt><dd>{selectedNode.inputs.map((socket) => socket.label).join(" · ")}</dd></div><div><dt>Outputs</dt><dd>{selectedNode.outputs.map((socket) => socket.label).join(" · ")}</dd></div></dl></div>
       </aside>
     </section>
   );
