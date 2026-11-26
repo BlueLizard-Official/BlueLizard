@@ -167,7 +167,7 @@ export function BuildOutputPreview() {
   }
 
   return (
-    <section className="build-output-section" id="build-output" aria-labelledby="build-output-title">
+    <section className="build-output-section" id="build-output" data-scroll-reveal aria-labelledby="build-output-title">
       <div className="container">
         <div className="build-output-heading">
           <div>
