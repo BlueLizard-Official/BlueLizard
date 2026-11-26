@@ -890,36 +890,77 @@ button { font: inherit; }
 .founders-section {
   display: none;
   scroll-margin-top: 64px;
+  padding: clamp(38px, 5.5vw, 74px) 0;
+  border-top: 1px solid var(--hairline);
+  background: radial-gradient(ellipse at 50% 0%, #e7f0f7, var(--canvas) 75%);
 }
 
-.founders-section:target {
-  display: block;
+.founders-section:target { display: block; }
+
+.founders-content { text-align: center; }
+
+.founders-content h2 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(36px, 5vw, 62px);
+  font-weight: 500;
+  letter-spacing: -0.06em;
+  line-height: 1.05;
 }
 
 .founder-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 335px), 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(14px, 3vw, 26px);
   max-width: 740px;
-  margin: 24px 0;
+  margin: 28px auto 24px;
 }
 
 .founder-profile {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 20px;
-  padding: 16px;
+  overflow: hidden;
   border: 1px solid var(--hairline);
-  border-radius: 12px;
+  border-radius: 16px;
   background: var(--surface-card);
+  box-shadow: 0 12px 30px rgb(23 44 62 / 7%);
+  text-align: left;
 }
 
-.founder-profile img { display: block; border-radius: 8px; }
-.prose .founder-profile h3 { margin: 0 0 4px; }
-.prose .founder-profile p { margin: 0; }
+.founder-portrait {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #dce5eb;
+}
 
-.founder-link { margin-top: 8px; }
+.founder-portrait img {
+  object-fit: cover;
+  object-position: center 36%;
+  filter: grayscale(1);
+}
+
+.founder-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+}
+
+.founder-details h3 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(17px, 2.1vw, 23px);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.founder-details p { margin: 4px 0 0; color: var(--body); font-size: 14px; }
+.founder-link { flex: 0 0 auto; }
+
+@media (max-width: 560px) {
+  .founder-grid { grid-template-columns: 1fr; max-width: 360px; }
+}
 
 .blueprint-hero {
   background: radial-gradient(ellipse at 86% 15%, #e8f1f8 0%, transparent 44%), var(--canvas);
