@@ -91,7 +91,7 @@ export function BlueprintPreview() {
   const selectedNode = nodeContent[selectedId as keyof typeof nodeContent];
 
   return (
-    <section className="blueprint-preview" id="blueprint" aria-labelledby="blueprint-preview-title">
+    <section className="blueprint-preview" id="blueprint" data-scroll-reveal aria-labelledby="blueprint-preview-title">
       <div className="blueprint-preview-header">
         <div><p className="blueprint-kicker">Conceptual preview</p><h2 id="blueprint-preview-title">A backend you can inspect at a glance.</h2></div>
         <p className="blueprint-preview-note">Click a node to inspect its purpose and configuration.</p>
