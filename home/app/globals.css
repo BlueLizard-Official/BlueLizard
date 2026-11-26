@@ -1181,3 +1181,46 @@ button { font: inherit; }
 @media (prefers-reduced-motion: no-preference) {
   .launch-dialog[open] { animation: section-reveal 250ms ease-out; }
 }
+
+.blueprint-explorer { margin-top: clamp(54px, 8vw, 110px); scroll-margin-top: 90px; }
+.blueprint-explorer-heading { margin-bottom: 24px; }
+.blueprint-explorer-heading h2 { margin: 0 0 8px; color: var(--ink); font-size: clamp(33px, 5vw, 58px); line-height: 1.06; letter-spacing: -0.06em; font-weight: 500; }
+.blueprint-explorer-heading > p:last-child { margin: 0; color: var(--body); }
+.blueprint-explorer-shell { overflow: hidden; border: 1px solid #344c61; border-radius: 20px; background: #101b28; color: #eef5fc; box-shadow: 0 18px 46px rgb(16 35 58 / 14%); }
+.blueprint-explorer-toolbar, .blueprint-explorer-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px 18px; padding: 15px clamp(14px, 2.5vw, 28px); }
+.blueprint-explorer-toolbar { border-bottom: 1px solid #344c61; }
+.blueprint-explorer-toolbar button:disabled { opacity: 0.72; cursor: wait; }
+.blueprint-explorer-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(248px, 0.4fr); }
+.blueprint-explorer-canvas { padding: clamp(14px, 2.5vw, 28px); background: radial-gradient(#45617a 1px, transparent 1px) 0 0 / 19px 19px; }
+.blueprint-explorer-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 0; padding: 0; list-style: none; }
+.blueprint-explorer-steps > li { display: flex; min-width: 0; }
+.blueprint-explorer-steps button, .blueprint-explorer-storage { display: grid; align-content: start; gap: 6px; width: 100%; padding: 13px; border: 1px solid #415b72; border-radius: 10px; background: #172737; color: #eef5fc; text-align: left; cursor: pointer; }
+.blueprint-explorer-steps button { min-height: 105px; }
+.blueprint-explorer-storage { grid-template-columns: 1fr auto; gap: 12px; align-items: center; margin-top: 10px; }
+.blueprint-explorer-steps button[aria-pressed="true"], .blueprint-explorer-storage[aria-pressed="true"] { border-color: #85ceff; background: #224d6c; box-shadow: inset 0 0 0 1px #85ceff; }
+.blueprint-explorer-steps button:hover, .blueprint-explorer-storage:hover { border-color: #85ceff; }
+.blueprint-explorer-steps button[data-traced="true"] .blueprint-explorer-step-label > span { color: #0f2638; background: #9ee0ff; }
+.blueprint-explorer-step-label { display: flex; align-items: center; gap: 7px; color: #b2d0e8; font: 11px/1.4 var(--font-site-mono), monospace; }
+.blueprint-explorer-step-label > span { padding: 1px 4px; border-radius: 3px; background: #29435a; }
+.blueprint-explorer-steps strong, .blueprint-explorer-storage strong { font-size: 14px; line-height: 1.35; overflow-wrap: anywhere; }
+.blueprint-explorer-description { color: #c5d4e1; font-size: 12px; line-height: 1.4; }
+.blueprint-explorer-inspector { padding: clamp(18px, 2.5vw, 30px); border-left: 1px solid #344c61; background: #142333; overflow-wrap: anywhere; }
+.blueprint-explorer-inspector .blueprint-kicker { color: #9dd6ff; }
+.blueprint-explorer-inspector h3 { margin: 0; font-size: clamp(20px, 2vw, 25px); line-height: 1.15; }
+.blueprint-explorer-inspector h3 + p, .blueprint-explorer-inspector dd { color: #c5d4e1; font-size: 13px; }
+.blueprint-explorer-inspector dl { margin: 18px 0 0; }
+.blueprint-explorer-inspector dl div { padding: 8px 0; border-top: 1px solid #344c61; }
+.blueprint-explorer-inspector dt { color: #9dd6ff; font-size: 12px; }
+.blueprint-explorer-inspector dd { margin: 3px 0 0; }
+.blueprint-explorer-footer { min-height: 46px; border-top: 1px solid #344c61; color: #c5d4e1; font-size: 12px; }
+.blueprint-explorer-footer [role="status"] { color: #ade5ff; }
+@media (prefers-reduced-motion: no-preference) {
+  .blueprint-explorer-steps button, .blueprint-explorer-storage { transition: background-color 180ms, border-color 180ms, box-shadow 180ms; }
+}
+@media (max-width: 860px) {
+  .blueprint-explorer-body { grid-template-columns: 1fr; }
+  .blueprint-explorer-inspector { border-left: 0; border-top: 1px solid #344c61; }
+}
+@media (max-width: 540px) {
+  .blueprint-explorer-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
