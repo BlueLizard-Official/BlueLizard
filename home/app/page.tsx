@@ -112,26 +112,28 @@ export default function Home() {
 
       <section className="blueprint-section faq-section" id="faq" data-scroll-reveal><div className="container faq-grid"><div><Eyebrow>FAQ</Eyebrow><h2>Clear about what is real, planned, and next.</h2><p className="section-copy">The preview is intentionally honest: it shows the product direction without presenting the conceptual graph as a shipped editor.</p></div><div className="faq-list">{faqs.map(([question, answer]) => <details key={question}><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div></div></section>
 
-      <section className="blueprint-section founders-section" id="Founders" aria-labelledby="founders-heading">
-        <div className="container">
-          <div className="prose">
-            <h2 id="founders-heading">Founders</h2>
-            <div className="founder-grid">
-              {founders.map(({ name, role, photo, linkedin }) => (
-                <article className="founder-profile" key={name}>
-                  <Image src={photo} alt={name} width={128} height={128} />
+      <section className="founders-section" id="Founders" aria-labelledby="founders-heading">
+        <div className="container founders-content">
+          <h2 id="founders-heading">Meet the founders</h2>
+          <div className="founder-grid">
+            {founders.map(({ name, role, photo, linkedin }) => (
+              <article className="founder-profile" key={name}>
+                <div className="founder-portrait">
+                  <Image src={photo} alt="" fill sizes="(max-width: 560px) 90vw, 360px" />
+                </div>
+                <div className="founder-details">
                   <div>
                     <h3>{name}</h3>
                     <p>{role}</p>
-                    <a className="text-link founder-link" href={linkedin} aria-label={`${name} on LinkedIn`}>
-                      LinkedIn <span className="text-link-arrow" aria-hidden="true">↗</span>
-                    </a>
                   </div>
-                </article>
-              ))}
-            </div>
-            <p>For collaboration or inquiries for the BlueLizard founding team, <a href="/contact">get in touch</a>.</p>
+                  <a className="text-link founder-link" href={linkedin} aria-label={`${name} on LinkedIn`}>
+                    LinkedIn <span className="text-link-arrow" aria-hidden="true">↗</span>
+                  </a>
+                </div>
+              </article>
+            ))}
           </div>
+          <Link className="button-secondary" href="/contact">Contact the founding team</Link>
         </div>
       </section>
 
