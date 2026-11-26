@@ -3,7 +3,7 @@ import Link from "next/link";
 import { PricingCard } from "./components/pricing-card";
 import { BuildOutputPreview } from "./components/build-output-preview";
 import { BlueprintPreview } from "./components/blueprint-preview";
-import { ScrollReveal } from "./components/scroll-reveal";
+import { WorkflowExplorer } from "./components/workflow-explorer";
 import { SignupTrace } from "./components/signup-trace";
 import { CTA, Eyebrow, SectionHeading, StatusPill } from "./components/ui";
 import { SITE_DESCRIPTION, SITE_TITLE } from "./lib/metadata";
@@ -31,12 +31,6 @@ const blueprintPrinciples = [
   ["03", "Every change has context", "Blueprints give build systems and AI tools a shared model of what a backend change affects."],
 ] as const;
 
-const workflowSteps = [
-  ["Define", "Place the endpoint, data, policy, and infrastructure nodes that describe the system you intend to build."],
-  ["Connect", "Draw explicit relationships between inputs, transformations, permissions, storage, and outputs."],
-  ["Build", "Use the blueprint as structured context for validation, code generation, deployment, and diagnostics."],
-] as const;
-
 const securityPrinciples = [
   ["Least privilege", "Make permission boundaries part of the architecture, not a comment left behind in a source file."],
   ["Inspectable flows", "Review how identity, policy, data, and infrastructure connect before a change reaches production."],
@@ -47,13 +41,12 @@ const faqs = [
   ["Is the blueprint editor available today?", "Not yet. This homepage shows a conceptual preview of the visual system BlueLizard is building. The nodes, connections, and inspector are illustrative, not a functioning editor."],
   ["Is BlueLizard a replacement for my framework?", "BlueLizard is intended to sit above existing backend technologies as a structured design, validation, and build layer. The supported runtime surface will become clearer as the project develops."],
   ["How will AI agents use a blueprint?", "The intended MCP integration gives compatible agents a structured representation of a backend so they can inspect relationships, propose changes, and return bounded diagnostics."],
-  ["What is the MVP target?", "December 3, 2026 is the current MVP target, not a completed release date. Join the waitlist for updates as the product moves toward that target."],
+  ["When is the MVP launching?", "The MVP is launching soon. Join the waitlist for launch updates."],
 ] as const;
 
 export default function Home() {
   return (
     <>
-      <ScrollReveal />
       <section className="blueprint-hero">
         <div className="container">
           <div className="blueprint-hero-grid">
@@ -62,7 +55,7 @@ export default function Home() {
               <h1>See how your backend works <span>before you build it.</span></h1>
               <p className="blueprint-hero-description">Design your backend as a visual blueprint. Follow a request from the API endpoint to the database and see where validation, permissions, and infrastructure fit.</p>
               <div className="blueprint-hero-actions"><Link className="button-primary" href="/waitlist">Join the Waitlist</Link><a className="button-secondary" href="#blueprint">Explore the Blueprint</a></div>
-              <div className="blueprint-hero-status"><StatusPill tone="orange">MVP target: December 3, 2026</StatusPill></div>
+              <div className="blueprint-hero-status"><StatusPill tone="orange">MVP launching soon</StatusPill></div>
             </div>
             <SignupTrace />
           </div>
@@ -80,7 +73,7 @@ export default function Home() {
       <section className="blueprint-section" id="workflow" data-scroll-reveal>
         <div className="container">
           <SectionHeading eyebrow="The workflow" title="A visual blueprint is a better starting point." description="The product is being shaped around a simple loop: make the system legible, make the change explicit, then make the build repeatable." />
-          <div className="workflow-grid">{workflowSteps.map(([title, description], index) => <article className="workflow-card" key={title}><div className="workflow-card-top"><span>0{index + 1}</span><span className="workflow-card-line" /></div><h3>{title}</h3><p>{description}</p></article>)}</div>
+          <WorkflowExplorer />
         </div>
       </section>
 
@@ -105,10 +98,10 @@ export default function Home() {
       <BuildOutputPreview />
 
       <section className="blueprint-section" id="pricing" data-scroll-reveal>
-        <div className="container home-pricing-layout"><div><SectionHeading eyebrow="Pricing" title="Discuss your Developer License." description="Share your project and deployment needs with the BlueLizard team." /><p className="home-pricing-note">MVP target: December 3, 2026</p><Link className="text-link" href="/pricing">Explore the Developer License</Link></div><PricingCard compact /></div>
+        <div className="container home-pricing-layout"><div><SectionHeading eyebrow="Pricing" title="Discuss your Developer License." description="Share your project and deployment needs with the BlueLizard team." /><p className="home-pricing-note">MVP launching soon</p><Link className="text-link" href="/pricing">Explore the Developer License</Link></div><PricingCard compact /></div>
       </section>
 
-      <section className="waitlist-banner" id="waitlist-signup" data-scroll-reveal><div className="container waitlist-banner-inner"><div><Eyebrow>Early access</Eyebrow><h2>Design the next backend with us.</h2><p>BlueLizard MVP target: December 3, 2026. Join the waitlist for product updates and early access.</p></div><Link className="button-dark" href="/waitlist">Join the Waitlist</Link></div></section>
+      <section className="waitlist-banner" id="waitlist-signup" data-scroll-reveal><div className="container waitlist-banner-inner"><div><Eyebrow>Early access</Eyebrow><h2>Design the next backend with us.</h2><p>BlueLizard MVP launching soon. Join the waitlist for product updates and early access.</p></div><Link className="button-dark" href="/waitlist">Join the Waitlist</Link></div></section>
 
       <section className="blueprint-section faq-section" id="faq" data-scroll-reveal><div className="container faq-grid"><div><Eyebrow>FAQ</Eyebrow><h2>Clear about what is real, planned, and next.</h2><p className="section-copy">The preview is intentionally honest: it shows the product direction without presenting the conceptual graph as a shipped editor.</p></div><div className="faq-list">{faqs.map(([question, answer]) => <details key={question}><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div></div></section>
 

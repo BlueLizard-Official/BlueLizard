@@ -1,7 +1,7 @@
 import { BlueprintConnection } from "./blueprint-connection";
 import { BlueprintNode, type BlueprintNodeData } from "./blueprint-node";
 
-const signupSteps = ["request", "validation", "redis", "authentication", "policy", "database", "response"] as const;
+export const signupSteps = ["request", "validation", "redis", "authentication", "policy", "database", "response"] as const;
 
 type SignupNodeId = (typeof signupSteps)[number] | "postgres";
 type SignupNodeContent = Record<SignupNodeId, Omit<BlueprintNodeData, "id" | "position">>;
@@ -10,9 +10,11 @@ export function SignupBlueprintGraph({
   content,
   selectedId,
   onSelect,
+  traceStep = -1,
 }: {
   readonly content: SignupNodeContent;
   readonly selectedId: string;
+  readonly traceStep?: number;
   readonly onSelect: (id: string) => void;
 }) {
   return (["desktop", "mobile"] as const).map((variant) => {
@@ -43,6 +45,7 @@ export function SignupBlueprintGraph({
               from={{ x: laneX, y: nodes[index].position.y + nodes[index].position.height }}
               to={{ x: laneX, y: position.y }}
               tone="blue"
+              active={index < traceStep}
             />
           ))}
           <BlueprintConnection from={{ x: x + width, y: storageY }} to={{ x: storageX, y: storageY }} tone="orange" />

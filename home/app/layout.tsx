@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { SiteFooter } from "./components/site-footer";
+import { LaunchAnnouncement } from "./components/launch-announcement";
 import { SiteHeader } from "./components/site-header";
+import { ScrollReveal } from "./components/scroll-reveal";
 import { SiteLoader } from "./components/site-loader";
 import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "./lib/metadata";
 
@@ -22,6 +24,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       </head>
       <body>
         <SiteLoader />
-        <div className="site-shell"><SiteHeader /><main className="site-main">{children}</main><SiteFooter /></div></body>
+        <ScrollReveal />
+        <div className="reading-progress" aria-hidden="true" />
+        <div className="site-shell"><SiteHeader /><LaunchAnnouncement /><main className="site-main">{children}</main><SiteFooter /></div></body>
     </html>;
 }

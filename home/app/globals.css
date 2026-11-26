@@ -1052,11 +1052,11 @@ button { font: inherit; }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  [data-scroll-reveal][data-revealed] {
+  [data-revealed] {
     animation: section-reveal 480ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  [data-scroll-reveal]:focus-within {
+  [data-revealed]:focus-within {
     animation: none;
   }
 }
@@ -1064,4 +1064,120 @@ button { font: inherit; }
 @keyframes section-reveal {
   from { opacity: 0.5; transform: translateY(18px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+.workflow-stage {
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  min-height: 185px;
+  text-align: left;
+  color: var(--ink);
+  cursor: pointer;
+  border-radius: 14px;
+}
+.workflow-stage strong { font-size: 25px; letter-spacing: -0.04em; }
+.workflow-stage > span:last-child { color: var(--body); font-size: 14px; line-height: 1.55; }
+.workflow-stage[aria-pressed="true"], .workflow-stage:hover { border-color: #6796b8; background: #eaf4fa; }
+.workflow-example {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 14px;
+  padding: 18px 22px;
+  border-radius: 12px;
+  background: #101b28;
+  color: #e0eef9;
+}
+.workflow-example code { font-family: var(--font-site-mono), monospace; }
+.workflow-example .text-link { color: #b9def8; }
+.blueprint-preview-tools { display: grid; justify-items: end; gap: 8px; }
+.blueprint-preview-tools button:disabled { cursor: wait; opacity: 0.65; }
+.blueprint-inspector { align-self: start; }
+.blueprint-connection[data-active="true"] path { stroke: #90deff; stroke-width: 3; }
+.build-output-pipeline-step { border: 0; cursor: pointer; text-align: left; }
+.build-output-pipeline-step:hover, .build-output-pipeline-step[aria-pressed="true"] { background: #c9e3f2; }
+.build-stage-note { margin: 12px 0 20px; color: var(--body); font-size: 14px; }
+.build-output-panel pre, .build-output-panel code { font-family: var(--font-site-mono), monospace; }
+#build-output { scroll-margin-top: 76px; }
+.reading-progress { display: none; }
+
+@media (max-width: 767px) {
+  .blueprint-preview-tools { justify-items: start; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .motion-swap { animation: section-reveal 280ms ease-out; }
+  .workflow-stage, .build-output-pipeline-step, .founder-profile, .feature-card, .roadmap-card, .button-primary, .button-secondary {
+    transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  }
+
+  @supports (animation-timeline: scroll()) {
+    .reading-progress {
+      display: block;
+      position: fixed;
+      z-index: 21;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      transform-origin: left;
+      background: #4399cf;
+      pointer-events: none;
+      animation: reading-progress linear both;
+      animation-timeline: scroll(root);
+    }
+  }
+}
+@media (prefers-reduced-motion: no-preference) and (hover: hover) {
+  .workflow-stage:hover, .founder-profile:hover, .feature-card:hover, .roadmap-card:hover, .button-primary:hover, .button-secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 9px 24px rgb(23 44 62 / 12%);
+  }
+}
+@keyframes reading-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.launch-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4px 16px;
+  padding: 8px 16px;
+  background: #14283a;
+  color: #f0f7ff;
+  text-align: center;
+  font-size: 13px;
+}
+.launch-banner button {
+  padding: 4px 2px;
+  border: 0;
+  background: transparent;
+  color: #b6deff;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.launch-dialog {
+  position: fixed;
+  inset: 0;
+  width: min(460px, calc(100% - 32px));
+  margin: auto;
+  padding: clamp(22px, 5vw, 38px);
+  border: 1px solid var(--hairline);
+  border-radius: 19px;
+  background: var(--surface-card);
+  color: var(--ink);
+}
+.launch-dialog::backdrop { background: rgb(10 20 31 / 70%); }
+.launch-dialog h2 { margin: 8px 0; font-size: clamp(27px, 6vw, 40px); line-height: 1.08; letter-spacing: -0.045em; }
+.launch-dialog p { max-width: 33ch; }
+.launch-dialog-close { position: absolute; top: 9px; right: 9px; width: 40px; height: 40px; border: 0; border-radius: 9px; background: var(--canvas-soft); color: var(--ink); cursor: pointer; font-size: 24px; }
+@media (prefers-reduced-motion: no-preference) {
+  .launch-dialog[open] { animation: section-reveal 250ms ease-out; }
 }
